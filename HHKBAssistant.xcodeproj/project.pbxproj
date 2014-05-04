@@ -14,10 +14,6 @@
 		00EAB1E41915E1AC0028212D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB1E31915E1AC0028212D /* AppDelegate.m */; };
 		00EAB1E71915E1AC0028212D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1E51915E1AC0028212D /* MainMenu.xib */; };
 		00EAB1E91915E1AC0028212D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1E81915E1AC0028212D /* Images.xcassets */; };
-		00EAB1F01915E1AC0028212D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB1EF1915E1AC0028212D /* XCTest.framework */; };
-		00EAB1F11915E1AC0028212D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB1D01915E1AC0028212D /* Cocoa.framework */; };
-		00EAB1F91915E1AC0028212D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1F71915E1AC0028212D /* InfoPlist.strings */; };
-		00EAB1FB1915E1AC0028212D /* HHKBAssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB1FA1915E1AC0028212D /* HHKBAssistantTests.m */; };
 		00EAB2051915E3990028212D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB2041915E3990028212D /* Security.framework */; };
 		00EAB2071915E3A40028212D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB2061915E3A40028212D /* ServiceManagement.framework */; };
 		00EAB2091915E3AA0028212D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB2081915E3AA0028212D /* IOKit.framework */; };
@@ -28,16 +24,6 @@
 		00EAB2151915E3E30028212D /* icon_48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2101915E3E30028212D /* icon_48x48.png */; };
 		00EAB2161915E3E30028212D /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2111915E3E30028212D /* icon_64x64.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		00EAB1F21915E1AC0028212D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 00EAB1C51915E1AC0028212D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00EAB1CC1915E1AC0028212D;
-			remoteInfo = HHKBAssistant;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHKBAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,11 +40,7 @@
 		00EAB1E31915E1AC0028212D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		00EAB1E61915E1AC0028212D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		00EAB1E81915E1AC0028212D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		00EAB1EE1915E1AC0028212D /* HHKBAssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HHKBAssistantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EAB1EF1915E1AC0028212D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		00EAB1F61915E1AC0028212D /* HHKBAssistantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HHKBAssistantTests-Info.plist"; sourceTree = "<group>"; };
-		00EAB1F81915E1AC0028212D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		00EAB1FA1915E1AC0028212D /* HHKBAssistantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHKBAssistantTests.m; sourceTree = "<group>"; };
 		00EAB2041915E3990028212D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		00EAB2061915E3A40028212D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		00EAB2081915E3AA0028212D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -83,15 +65,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		00EAB1EB1915E1AC0028212D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00EAB1F11915E1AC0028212D /* Cocoa.framework in Frameworks */,
-				00EAB1F01915E1AC0028212D /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				00EAB1D61915E1AC0028212D /* HHKBAssistant */,
-				00EAB1F41915E1AC0028212D /* HHKBAssistantTests */,
 				00EAB1CF1915E1AC0028212D /* Frameworks */,
 				00EAB1CE1915E1AC0028212D /* Products */,
 			);
@@ -109,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */,
-				00EAB1EE1915E1AC0028212D /* HHKBAssistantTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,24 +134,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		00EAB1F41915E1AC0028212D /* HHKBAssistantTests */ = {
-			isa = PBXGroup;
-			children = (
-				00EAB1FA1915E1AC0028212D /* HHKBAssistantTests.m */,
-				00EAB1F51915E1AC0028212D /* Supporting Files */,
-			);
-			path = HHKBAssistantTests;
-			sourceTree = "<group>";
-		};
-		00EAB1F51915E1AC0028212D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				00EAB1F61915E1AC0028212D /* HHKBAssistantTests-Info.plist */,
-				00EAB1F71915E1AC0028212D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		00EAB20C1915E3E30028212D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,24 +166,6 @@
 			productReference = 00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */;
 			productType = "com.apple.product-type.application";
 		};
-		00EAB1ED1915E1AC0028212D /* HHKBAssistantTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 00EAB2011915E1AC0028212D /* Build configuration list for PBXNativeTarget "HHKBAssistantTests" */;
-			buildPhases = (
-				00EAB1EA1915E1AC0028212D /* Sources */,
-				00EAB1EB1915E1AC0028212D /* Frameworks */,
-				00EAB1EC1915E1AC0028212D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				00EAB1F31915E1AC0028212D /* PBXTargetDependency */,
-			);
-			name = HHKBAssistantTests;
-			productName = HHKBAssistantTests;
-			productReference = 00EAB1EE1915E1AC0028212D /* HHKBAssistantTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -239,11 +174,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = hanks;
-				TargetAttributes = {
-					00EAB1ED1915E1AC0028212D = {
-						TestTargetID = 00EAB1CC1915E1AC0028212D;
-					};
-				};
 			};
 			buildConfigurationList = 00EAB1C81915E1AC0028212D /* Build configuration list for PBXProject "HHKBAssistant" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -259,7 +189,6 @@
 			projectRoot = "";
 			targets = (
 				00EAB1CC1915E1AC0028212D /* HHKBAssistant */,
-				00EAB1ED1915E1AC0028212D /* HHKBAssistantTests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,14 +210,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		00EAB1EC1915E1AC0028212D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00EAB1F91915E1AC0028212D /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -301,23 +222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		00EAB1EA1915E1AC0028212D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00EAB1FB1915E1AC0028212D /* HHKBAssistantTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		00EAB1F31915E1AC0028212D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 00EAB1CC1915E1AC0028212D /* HHKBAssistant */;
-			targetProxy = 00EAB1F21915E1AC0028212D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		00EAB1D91915E1AC0028212D /* InfoPlist.strings */ = {
@@ -342,14 +247,6 @@
 				00EAB1E61915E1AC0028212D /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		00EAB1F71915E1AC0028212D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				00EAB1F81915E1AC0028212D /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -451,46 +348,6 @@
 			};
 			name = Release;
 		};
-		00EAB2021915E1AC0028212D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HHKBAssistant.app/Contents/MacOS/HHKBAssistant";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HHKBAssistant/HHKBAssistant-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "HHKBAssistantTests/HHKBAssistantTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		00EAB2031915E1AC0028212D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HHKBAssistant.app/Contents/MacOS/HHKBAssistant";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HHKBAssistant/HHKBAssistant-Prefix.pch";
-				INFOPLIST_FILE = "HHKBAssistantTests/HHKBAssistantTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,14 +365,6 @@
 			buildConfigurations = (
 				00EAB1FF1915E1AC0028212D /* Debug */,
 				00EAB2001915E1AC0028212D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		00EAB2011915E1AC0028212D /* Build configuration list for PBXNativeTarget "HHKBAssistantTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00EAB2021915E1AC0028212D /* Debug */,
-				00EAB2031915E1AC0028212D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
