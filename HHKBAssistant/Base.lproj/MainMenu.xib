@@ -21,7 +21,7 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="Sa6-6n-McX">
             <items>
-                <menuItem title="Disable Mac build-in keyboard" id="qxb-JU-ZhS">
+                <menuItem title="Disable Build-in Keyboard" id="qxb-JU-ZhS">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="changeKeyboardMode:" target="Voe-Tx-rLC" id="oAf-vm-Skc"/>
@@ -30,7 +30,7 @@
                 <menuItem title="Preferences..." id="OHI-sH-3WE">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Run on startup" id="dQb-3P-7cE">
+                <menuItem title="Run On Startup" id="dQb-3P-7cE">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="runOnStartup:" target="Voe-Tx-rLC" id="Qa6-zA-5uE"/>
