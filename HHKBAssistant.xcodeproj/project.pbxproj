@@ -23,6 +23,7 @@
 		00EAB2141915E3E30028212D /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB20F1915E3E30028212D /* icon_32x32.png */; };
 		00EAB2151915E3E30028212D /* icon_48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2101915E3E30028212D /* icon_48x48.png */; };
 		00EAB2161915E3E30028212D /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2111915E3E30028212D /* icon_64x64.png */; };
+		00EAB31119169EBC0028212D /* USBDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB31019169EBC0028212D /* USBDeviceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		00EAB20F1915E3E30028212D /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_32x32.png; sourceTree = "<group>"; };
 		00EAB2101915E3E30028212D /* icon_48x48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_48x48.png; sourceTree = "<group>"; };
 		00EAB2111915E3E30028212D /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_64x64.png; sourceTree = "<group>"; };
+		00EAB30F19169EBC0028212D /* USBDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBDeviceManager.h; sourceTree = "<group>"; };
+		00EAB31019169EBC0028212D /* USBDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBDeviceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				00EAB1E51915E1AC0028212D /* MainMenu.xib */,
 				00EAB1E81915E1AC0028212D /* Images.xcassets */,
 				00EAB1D71915E1AC0028212D /* Supporting Files */,
+				00EAB30F19169EBC0028212D /* USBDeviceManager.h */,
+				00EAB31019169EBC0028212D /* USBDeviceManager.m */,
 			);
 			path = HHKBAssistant;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00EAB1E41915E1AC0028212D /* AppDelegate.m in Sources */,
+				00EAB31119169EBC0028212D /* USBDeviceManager.m in Sources */,
 				00EAB1DD1915E1AC0028212D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
