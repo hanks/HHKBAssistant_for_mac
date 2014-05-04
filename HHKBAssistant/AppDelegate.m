@@ -105,10 +105,10 @@
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
     switch (kbStatus) {
         case BUILD_IN_KEYBOARD_DISABLE:
-            [self.kbChangeMenu setTitle:@"Enable Mac build-in keyboard"];
+            [self.kbChangeMenu setTitle:@"Enable Build-in Keyboard"];
             break;
         case BUILD_IN_KEYBOARD_ENABLE:
-            [self.kbChangeMenu setTitle:@"Disable Mac build-in keyboard"];
+            [self.kbChangeMenu setTitle:@"Disable Build-in Keyboard"];
             break;
     }
 }
