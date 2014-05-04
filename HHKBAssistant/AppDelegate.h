@@ -8,8 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    NSStatusItem * statusItem;
+    AuthorizationRef myAuthRef;
+}
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSMenu *statusMenu;
+@property (weak) IBOutlet NSMenuItem *kbChangeMenu;
+@property BOOL kbStatus;
+@property NSString *kbKextIdentifier;
 
 @end

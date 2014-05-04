@@ -12,18 +12,35 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+            <connections>
+                <outlet property="kbChangeMenu" destination="qxb-JU-ZhS" id="cXT-f5-Dhx"/>
+                <outlet property="statusMenu" destination="Sa6-6n-McX" id="kf6-5w-g3Y"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="Sa6-6n-McX">
             <items>
-                <menuItem title="Item 1" id="qxb-JU-ZhS">
+                <menuItem title="Disable Mac build-in keyboard" id="qxb-JU-ZhS">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="changeKeyboardMode:" target="Voe-Tx-rLC" id="oAf-vm-Skc"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Preferences..." id="OHI-sH-3WE">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item 2" id="OHI-sH-3WE">
+                <menuItem title="Run on startup" id="dQb-3P-7cE">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="runOnStartup:" target="Voe-Tx-rLC" id="Qa6-zA-5uE"/>
+                    </connections>
                 </menuItem>
-                <menuItem title="Item 3" id="dQb-3P-7cE">
+                <menuItem title="Quit" id="aaI-jd-c4t">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quit:" target="Voe-Tx-rLC" id="toz-Jc-zHv"/>
+                    </connections>
                 </menuItem>
             </items>
         </menu>
