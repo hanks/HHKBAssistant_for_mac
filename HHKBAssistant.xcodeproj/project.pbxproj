@@ -18,6 +18,15 @@
 		00EAB1F11915E1AC0028212D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB1D01915E1AC0028212D /* Cocoa.framework */; };
 		00EAB1F91915E1AC0028212D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1F71915E1AC0028212D /* InfoPlist.strings */; };
 		00EAB1FB1915E1AC0028212D /* HHKBAssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB1FA1915E1AC0028212D /* HHKBAssistantTests.m */; };
+		00EAB2051915E3990028212D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB2041915E3990028212D /* Security.framework */; };
+		00EAB2071915E3A40028212D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB2061915E3A40028212D /* ServiceManagement.framework */; };
+		00EAB2091915E3AA0028212D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB2081915E3AA0028212D /* IOKit.framework */; };
+		00EAB20B1915E3B00028212D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB20A1915E3B00028212D /* CoreFoundation.framework */; };
+		00EAB2121915E3E30028212D /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB20D1915E3E30028212D /* icon_128x128.png */; };
+		00EAB2131915E3E30028212D /* icon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB20E1915E3E30028212D /* icon_16x16.png */; };
+		00EAB2141915E3E30028212D /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB20F1915E3E30028212D /* icon_32x32.png */; };
+		00EAB2151915E3E30028212D /* icon_48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2101915E3E30028212D /* icon_48x48.png */; };
+		00EAB2161915E3E30028212D /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2111915E3E30028212D /* icon_64x64.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +59,15 @@
 		00EAB1F61915E1AC0028212D /* HHKBAssistantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HHKBAssistantTests-Info.plist"; sourceTree = "<group>"; };
 		00EAB1F81915E1AC0028212D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00EAB1FA1915E1AC0028212D /* HHKBAssistantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHKBAssistantTests.m; sourceTree = "<group>"; };
+		00EAB2041915E3990028212D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		00EAB2061915E3A40028212D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		00EAB2081915E3AA0028212D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		00EAB20A1915E3B00028212D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		00EAB20D1915E3E30028212D /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
+		00EAB20E1915E3E30028212D /* icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_16x16.png; sourceTree = "<group>"; };
+		00EAB20F1915E3E30028212D /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_32x32.png; sourceTree = "<group>"; };
+		00EAB2101915E3E30028212D /* icon_48x48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_48x48.png; sourceTree = "<group>"; };
+		00EAB2111915E3E30028212D /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_64x64.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +75,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EAB20B1915E3B00028212D /* CoreFoundation.framework in Frameworks */,
+				00EAB2091915E3AA0028212D /* IOKit.framework in Frameworks */,
+				00EAB2071915E3A40028212D /* ServiceManagement.framework in Frameworks */,
+				00EAB2051915E3990028212D /* Security.framework in Frameworks */,
 				00EAB1D11915E1AC0028212D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +117,10 @@
 		00EAB1CF1915E1AC0028212D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00EAB20A1915E3B00028212D /* CoreFoundation.framework */,
+				00EAB2081915E3AA0028212D /* IOKit.framework */,
+				00EAB2061915E3A40028212D /* ServiceManagement.framework */,
+				00EAB2041915E3990028212D /* Security.framework */,
 				00EAB1D01915E1AC0028212D /* Cocoa.framework */,
 				00EAB1EF1915E1AC0028212D /* XCTest.framework */,
 				00EAB1D21915E1AC0028212D /* Other Frameworks */,
@@ -115,6 +141,7 @@
 		00EAB1D61915E1AC0028212D /* HHKBAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				00EAB20C1915E3E30028212D /* Resources */,
 				00EAB1E21915E1AC0028212D /* AppDelegate.h */,
 				00EAB1E31915E1AC0028212D /* AppDelegate.m */,
 				00EAB1E51915E1AC0028212D /* MainMenu.xib */,
@@ -152,6 +179,18 @@
 				00EAB1F71915E1AC0028212D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		00EAB20C1915E3E30028212D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				00EAB20D1915E3E30028212D /* icon_128x128.png */,
+				00EAB20E1915E3E30028212D /* icon_16x16.png */,
+				00EAB20F1915E3E30028212D /* icon_32x32.png */,
+				00EAB2101915E3E30028212D /* icon_48x48.png */,
+				00EAB2111915E3E30028212D /* icon_64x64.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,9 +269,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EAB2161915E3E30028212D /* icon_64x64.png in Resources */,
 				00EAB1DB1915E1AC0028212D /* InfoPlist.strings in Resources */,
+				00EAB2151915E3E30028212D /* icon_48x48.png in Resources */,
 				00EAB1E91915E1AC0028212D /* Images.xcassets in Resources */,
+				00EAB2121915E3E30028212D /* icon_128x128.png in Resources */,
+				00EAB2131915E3E30028212D /* icon_16x16.png in Resources */,
 				00EAB1E11915E1AC0028212D /* Credits.rtf in Resources */,
+				00EAB2141915E3E30028212D /* icon_32x32.png in Resources */,
 				00EAB1E71915E1AC0028212D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
