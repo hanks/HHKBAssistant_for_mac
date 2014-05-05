@@ -109,7 +109,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjP-Jz-3xC">
-                        <rect key="frame" x="179" y="9" width="118" height="17"/>
+                        <rect key="frame" x="331" y="50" width="118" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Powered by hanks" id="lK1-KF-uph">
                             <font key="font" metaFont="system"/>
