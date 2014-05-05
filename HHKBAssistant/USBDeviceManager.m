@@ -15,7 +15,7 @@
 @synthesize gAddedIter;
 @synthesize gRunLoop;
 @synthesize targetDeviceArr;
-@synthesize delegate;
+
 
 //////////////////////////////////////////////////
 // wrapper object-c method to c callback function
@@ -213,16 +213,8 @@ static void SignalHandler(int sigraised) {
     return 1;
 }
 
-- (void) addDevice:(NSString *)deviceName {
-    [delegate addDevice:deviceName];
-}
-
-- (void) removeDevice:(NSString *)deviceName {
-    [delegate removeDevice:deviceName];
-}
-
-- (void)updateDeviceArr {
-    targetDeviceArr = [delegate getDeviceArr];
+- (void) updateDeviceArr:(NSMutableArray *)newArr {
+    targetDeviceArr = newArr;
 }
 
 @end
