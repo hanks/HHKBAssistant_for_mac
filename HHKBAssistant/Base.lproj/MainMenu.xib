@@ -29,6 +29,9 @@
                 </menuItem>
                 <menuItem title="Preferences..." id="OHI-sH-3WE">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openPreferencePane:" target="Voe-Tx-rLC" id="sHs-ds-GUG"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Run On Startup" id="dQb-3P-7cE">
                     <modifierMask key="keyEquivalentModifierMask"/>

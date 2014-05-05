@@ -12,6 +12,7 @@
 #import "PreferenceUtil.h"
 
 
+
 #define BUILD_IN_KEYBOARD_ENABLE 1
 #define BUILD_IN_KEYBOARD_DISABLE 0
 
@@ -19,6 +20,7 @@
 
 @synthesize usbManager;
 @synthesize statusMenu;
+@synthesize prefPaneWindowController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -125,6 +127,11 @@
     }
     
     [self setKbChangeMenuTitle:kbStatus];
+}
+
+- (IBAction)openPreferencePane:(id)sender {
+    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithWindowNibName:XIBNAME];
+    [prefPaneWindowController showWindow:self];
 }
 
 - (IBAction)changeKeyboardMode:(id)sender {

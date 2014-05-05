@@ -8,12 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "USBDeviceManager.h"
+#import "PreferencePaneWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem * statusItem;
     AuthorizationRef myAuthRef;
 }
 
+@property (strong) PreferencePaneWindowController *prefPaneWindowController;
 @property (assign) IBOutlet NSMenu *statusMenu;
 @property (weak) IBOutlet NSMenuItem *kbChangeMenu;
 @property BOOL kbStatus;
