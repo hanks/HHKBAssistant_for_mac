@@ -27,13 +27,22 @@ typedef struct MyPrivateData {
 
 // structure for usb device info
 @property MyPrivateData* privateDataRef;
+// target device array
+@property NSMutableArray* targetDeviceArr;
 
+///////////////////////////////////////////
+//// use to listen to usb device
+///////////////////////////////////////////
 @property IONotificationPortRef	gNotifyPort;
 @property io_iterator_t			gAddedIter;
 @property CFRunLoopRef			gRunLoop;
 
 - (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument;
 - (void) detectDeviceAdded:(io_iterator_t) iterator;
+- (void) addDevice:(NSString *)deviceName;
+- (void) updateDeviceArr:(NSMutableArray *)newArray;
+
+// main function to set run loop to listen to usb device
 - (int) setupListener;
 
 @end

@@ -14,6 +14,7 @@
 @synthesize gNotifyPort;
 @synthesize gAddedIter;
 @synthesize gRunLoop;
+@synthesize targetDeviceArr;
 
 //////////////////////////////////////////////////
 // wrapper object-c method to c callback function
@@ -206,6 +207,13 @@ static void SignalHandler(int sigraised) {
     // 1: error status
     // 0: ok status
     return 0;
+}
+
+- (id) init {
+    if (self = [super init]) {
+        targetDeviceArr = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 @end
