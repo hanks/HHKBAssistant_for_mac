@@ -26,6 +26,7 @@
 		00EAB31119169EBC0028212D /* USBDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB31019169EBC0028212D /* USBDeviceManager.m */; };
 		00EAB313191714250028212D /* preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB312191714250028212D /* preferences.plist */; };
 		00EAB3161917153E0028212D /* PreferenceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB3151917153E0028212D /* PreferenceUtil.m */; };
+		00EAB31A19175DDE0028212D /* prefpane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB31919175DDE0028212D /* prefpane.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		00EAB312191714250028212D /* preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preferences.plist; sourceTree = "<group>"; };
 		00EAB3141917153E0028212D /* PreferenceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceUtil.h; sourceTree = "<group>"; };
 		00EAB3151917153E0028212D /* PreferenceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceUtil.m; sourceTree = "<group>"; };
+		00EAB31919175DDE0028212D /* prefpane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = prefpane.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				00EAB20F1915E3E30028212D /* icon_32x32.png */,
 				00EAB2101915E3E30028212D /* icon_48x48.png */,
 				00EAB2111915E3E30028212D /* icon_64x64.png */,
+				00EAB31919175DDE0028212D /* prefpane.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				00EAB2161915E3E30028212D /* icon_64x64.png in Resources */,
 				00EAB1DB1915E1AC0028212D /* InfoPlist.strings in Resources */,
+				00EAB31A19175DDE0028212D /* prefpane.xib in Resources */,
 				00EAB2151915E3E30028212D /* icon_48x48.png in Resources */,
 				00EAB1E91915E1AC0028212D /* Images.xcassets in Resources */,
 				00EAB2121915E3E30028212D /* icon_128x128.png in Resources */,
