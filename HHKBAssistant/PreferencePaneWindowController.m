@@ -41,16 +41,16 @@
     // get info from controls and save to plist file
     NSInteger flag;
     
-    flag = [autoDisableCheckbox gState];
+    flag = [autoDisableCheckbox state];
     [delegate setAutoDisable:flag];
     
-    flag = [enableVoiceCheckbox gState];
+    flag = [enableVoiceCheckbox state];
     [delegate setEnableVoice:flag];
 
-    flag = [inMsgCheckbox gState];
+    flag = [inMsgCheckbox state];
     [delegate setInMsgEnable:flag];
 
-    flag = [outMsgCheckbox gState];
+    flag = [outMsgCheckbox state];
     [delegate setOutMsgEnable:flag];
 
     
@@ -80,12 +80,6 @@
 
 - (void)_initControl {
     // use preference info from plist to init window control
-    NSLog(@"%zd", [delegate isAutoDisable]);
-    NSLog(@"%zd", [delegate isEnableVoice]);
-    NSLog(@"%zd", [delegate isInMsgEnable]);
-    NSLog(@"%zd", [delegate isOutMsgEnable]);
-    NSLog(@"%@", [delegate getInMsg]);
-    NSLog(@"%@", [delegate getOutMsg]);
     [autoDisableCheckbox setState:[delegate isAutoDisable]];
     [enableVoiceCheckbox setState:[delegate isEnableVoice]];
     [inMsgCheckbox setState:[delegate isInMsgEnable]];

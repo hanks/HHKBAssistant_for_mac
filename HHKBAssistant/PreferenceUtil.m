@@ -55,7 +55,7 @@
 }
 - (void) setAutoDisable:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_AUTO_DISABLE_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:(BOOL)flag] forKey:IS_AUTO_DISABLE_KEY];
     [self write];
 }
 
@@ -65,7 +65,7 @@
 }
 - (void) setEnableVoice:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_VOICE_MESSAGE_ALL_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:(BOOL)flag] forKey:IS_VOICE_MESSAGE_ALL_KEY];
     [self write];
 }
 
@@ -75,7 +75,7 @@
 }
 - (void) setInMsgEnable:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_VOICE_MESSAGE_IN_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:(BOOL)flag] forKey:IS_VOICE_MESSAGE_IN_KEY];
     [self write];
 }
 
@@ -85,7 +85,7 @@
 }
 - (void) setOutMsgEnable:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_VOICE_MESSAGE_OUT_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:(BOOL)flag] forKey:IS_VOICE_MESSAGE_OUT_KEY];
     [self write];
 }
 
