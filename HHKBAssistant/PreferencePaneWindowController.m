@@ -34,12 +34,33 @@
 }
 
 - (IBAction)canel:(id)sender {
-    NSLog(@"cacel");
     [myWindow close];
 }
 
 - (IBAction)save:(id)sender {
-    NSLog(@"save");
+    // get info from controls and save to plist file
+    NSInteger flag;
+    
+    flag = [autoDisableCheckbox gState];
+    [delegate setAutoDisable:flag];
+    
+    flag = [enableVoiceCheckbox gState];
+    [delegate setEnableVoice:flag];
+
+    flag = [inMsgCheckbox gState];
+    [delegate setInMsgEnable:flag];
+
+    flag = [outMsgCheckbox gState];
+    [delegate setOutMsgEnable:flag];
+
+    
+    NSString *text;
+    
+    text = [inMsgTextField stringValue];
+    [delegate setInMsg:text];
+    
+    text = [outMsgTextField stringValue];
+    [delegate setOutMsg:text];
 }
 
 - (void)windowDidLoad
