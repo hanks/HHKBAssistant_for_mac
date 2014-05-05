@@ -95,7 +95,7 @@ static void SignalHandler(int sigraised) {
                 // if hit, do action
                 
                 // voice
-                system("say HHKB Professional is ready");
+                [self voiceMessage:@"HHKB Professional is ready"];
                 
                 // Save the device's name to our private data.
                 privateDataRef->deviceName = deviceNameAsCFString;
@@ -211,6 +211,11 @@ static void SignalHandler(int sigraised) {
     // 1: error status
     // 0: ok status
     return 1;
+}
+
+- (void) voiceMessage:(NSString *)msg {
+    NSString *command = [NSString stringWithFormat:@"say %@", msg];
+    system([command UTF8String]);
 }
 
 - (void) updateDeviceArr:(NSMutableArray *)newArr {

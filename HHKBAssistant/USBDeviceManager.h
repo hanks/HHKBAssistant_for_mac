@@ -13,6 +13,7 @@
 #include <IOKit/IOMessage.h>
 #include <IOKit/IOCFPlugIn.h>
 #include <IOKit/usb/IOUSBLib.h>
+#import "DataSourceDelegate.h"
 
 typedef struct MyPrivateData {
     io_object_t				notification;
@@ -29,6 +30,8 @@ typedef struct MyPrivateData {
 @property MyPrivateData* privateDataRef;
 // target device array
 @property NSMutableArray* targetDeviceArr;
+// delegate for plist data source
+@property (nonatomic, assign) id<DataSourceDelegate>  delegate;
 
 ///////////////////////////////////////////
 //// use to listen to usb device
