@@ -15,7 +15,26 @@
 
 - (void) addDevice:(NSString *)deviceName;
 - (void) removeDevice:(NSString *)deviceName;
+
 - (NSMutableArray*) getDeviceArr;
+
+- (BOOL) isAutoDisable;
+- (void) setAutoDisable:(BOOL)flag;
+
+- (BOOL) isEnableVoice;
+- (void) setEnableVoice:(BOOL)flag;
+
+- (BOOL) isInMsgEnable;
+- (void) setInMsgEnable:(BOOL)flag;
+
+- (BOOL) isOutMsgEnable;
+- (void) setOutMsgEnable:(BOOL)flag;
+
+- (NSString *) getInMsg;
+- (void) setInMsg:(NSString *)msg;
+
+- (NSString *) getOutMsg;
+- (void) setOutMsg:(NSString *)msg;
 
 @end
 
