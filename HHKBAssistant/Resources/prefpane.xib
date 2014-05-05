@@ -13,6 +13,7 @@
                 <outlet property="inMsgTextField" destination="hsr-JL-qgR" id="af8-Dx-cEZ"/>
                 <outlet property="outMsgCheckbox" destination="4vc-jT-rxa" id="SIG-r5-EuN"/>
                 <outlet property="outMsgTextField" destination="ohn-9O-Gxc" id="YXv-YT-G6u"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="NHr-8C-wX3"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>

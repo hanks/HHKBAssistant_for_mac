@@ -15,6 +15,7 @@
 @implementation PreferencePaneWindowController
 
 @synthesize delegate;
+@synthesize myWindow;
 
 - (id)initWithWindow:(NSWindow *)window
 {

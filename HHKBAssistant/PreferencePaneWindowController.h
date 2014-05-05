@@ -21,6 +21,7 @@
 
 @interface PreferencePaneWindowController : NSWindowController
 
+@property (strong) IBOutlet NSWindow *myWindow;
 
 // delegate for plist data source
 @property (nonatomic, assign) id<DataSourceDelegate>  delegate;
