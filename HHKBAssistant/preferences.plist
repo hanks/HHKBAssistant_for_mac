@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>out_message</key>
+	<string>fade away</string>
+	<key>in_message</key>
+	<string>rock n load</string>
+	<key>is_voice_message_out</key>
+	<true/>
+	<key>is_voice_message_in</key>
+	<true/>
+	<key>is_voice_message_all</key>
+	<true/>
+	<key>is_auto_disable</key>
+	<true/>
 	<key>target_devices</key>
 	<array>
 		<string>HHKB Professional</string>

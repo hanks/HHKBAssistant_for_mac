@@ -93,10 +93,8 @@
     usbManager = [[USBDeviceManager alloc] init];
     // get preference util
     PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
-    // set delegate
-    usbManager.delegate = prefUtil;
     // update device array
-    [usbManager updateDeviceArr];
+    [usbManager updateDeviceArr:[prefUtil getDeviceArr]];
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
