@@ -15,9 +15,10 @@
 @interface PreferenceUtil : NSObject <DataSourceDelegate>
 
 @property NSMutableDictionary* plistDic;
+@property NSString *plistPath;
 
 - (NSObject *)read:(NSString *)key;
-- (void)write:(NSString *)key value:(NSObject *)value;
+- (void)write;
 + (id)getSharedInstance;
 - (void)update;
 
