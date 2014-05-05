@@ -108,10 +108,6 @@
     }
 }
 
-- (BOOL) getKbStatus {
-    return BUILD_IN_KEYBOARD_ENABLE;
-}
-
 - (void)changeKeyboardWith:(BOOL)kbStatus {
     switch (kbStatus) {
         case BUILD_IN_KEYBOARD_ENABLE:
@@ -129,7 +125,11 @@
 
 - (IBAction)openPreferencePane:(id)sender {
     prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithWindowNibName:XIBNAME];
-    [prefPaneWindowController showWindow:self];
+    [prefPaneWindowController showWindow:prefPaneWindowController.myWindow];
+    // set focus to new window
+    NSApplication *myApp = [NSApplication sharedApplication];
+    [myApp activateIgnoringOtherApps:YES];
+    [prefPaneWindowController.myWindow orderFrontRegardless];
 }
 
 - (IBAction)changeKeyboardMode:(id)sender {
