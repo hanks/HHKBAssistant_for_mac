@@ -29,6 +29,7 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
+        myWindow = window;
     }
     return self;
 }
