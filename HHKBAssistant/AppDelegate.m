@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <IOKit/kext/KextManager.h>
 #import <ServiceManagement/ServiceManagement.h>
+#import "PreferenceUtil.h"
 
 
 #define BUILD_IN_KEYBOARD_ENABLE 1
@@ -22,13 +23,13 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    self.kbKextIdentifier = @"com.apple.driver.AppleUSBTCKeyboard";
-    NSDictionary *kexts = (__bridge NSDictionary *)KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: self.kbKextIdentifier], NULL);
-    
-    
-    for (id key in kexts) {
-        NSLog(@"%@: %@", key, kexts[key]);
-    }
+//    self.kbKextIdentifier = @"com.apple.driver.AppleUSBTCKeyboard";
+//    NSDictionary *kexts = (__bridge NSDictionary *)KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: self.kbKextIdentifier], NULL);
+//    
+//    
+//    for (id key in kexts) {
+//        NSLog(@"%@: %@", key, kexts[key]);
+//    }
     
     // set up listener in background the thread
     [NSThread detachNewThreadSelector:@selector(setupListener) toTarget:usbManager withObject:nil];
@@ -88,6 +89,12 @@
     
     // init usb device manager
     usbManager = [[USBDeviceManager alloc] init];
+    // get preference util
+    PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
+    // set delegate
+    usbManager.delegate = prefUtil;
+    // update device array
+    [usbManager updateDeviceArr];
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {

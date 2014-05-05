@@ -14,6 +14,15 @@
 #include <IOKit/IOCFPlugIn.h>
 #include <IOKit/usb/IOUSBLib.h>
 
+// define data source operation deleaget
+@protocol DataSourceDelegate <NSObject>
+
+- (void) addDevice:(NSString *)deviceName;
+- (void) removeDevice:(NSString *)deviceName;
+- (NSMutableArray*) getDeviceArr;
+
+@end
+
 typedef struct MyPrivateData {
     io_object_t				notification;
     IOUSBDeviceInterface	**deviceInterface;
@@ -24,6 +33,9 @@ typedef struct MyPrivateData {
 @interface USBDeviceManager : NSObject {
 
 }
+
+// delegate for plist data source
+@property (nonatomic, assign) id<DataSourceDelegate>  delegate;
 
 // structure for usb device info
 @property MyPrivateData* privateDataRef;
@@ -39,8 +51,11 @@ typedef struct MyPrivateData {
 
 - (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument;
 - (void) detectDeviceAdded:(io_iterator_t) iterator;
+
+// device name array operation
 - (void) addDevice:(NSString *)deviceName;
-- (void) updateDeviceArr:(NSMutableArray *)newArray;
+- (void) removeDevice:(NSString *)deviceName;
+- (void) updateDeviceArr;
 
 // main function to set run loop to listen to usb device
 - (int) setupListener;

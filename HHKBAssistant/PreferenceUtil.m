@@ -13,7 +13,8 @@
 @synthesize plistDic;
 
 - (NSMutableDictionary *)load {
-    return [[NSMutableDictionary alloc]initWithContentsOfFile:PREFERENCE_NAME];
+    NSString* plistPath = [[NSBundle mainBundle] pathForResource:PREFERENCE_NAME ofType:@"plist"];
+    return [[NSMutableDictionary alloc]initWithContentsOfFile:plistPath];
 }
 
 - (void)update {
@@ -26,6 +27,20 @@
 
 - (void)write:(NSString *)key value:(NSObject *)value {
     
+}
+
+#pragma mark delegate Methods
+- (void) addDevice:(NSString *)deviceName {
+    
+}
+
+- (void) removeDevice:(NSString *)deviceName {
+    
+}
+
+- (NSMutableArray*) getDeviceArr {
+    [self update];
+    return (NSMutableArray*)[self read:DEVICES_KEY];
 }
 
 #pragma mark Singleton Methods
