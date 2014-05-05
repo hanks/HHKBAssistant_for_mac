@@ -68,7 +68,8 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    [self _initControl];
+    [self initControl];
+    [self initEventListener];
 }
 
 - (id)initWithXibAndDelegate:(NSString *)windowNibName delegate:(id<DataSourceDelegate>)newDelegate {
@@ -78,7 +79,7 @@
     return self;
 }
 
-- (void)_initControl {
+- (void)initControl {
     // use preference info from plist to init window control
     [autoDisableCheckbox setState:[delegate isAutoDisable]];
     [enableVoiceCheckbox setState:[delegate isEnableVoice]];
@@ -86,6 +87,85 @@
     [outMsgCheckbox setState:[delegate isOutMsgEnable]];
     [inMsgTextField setStringValue:[delegate getInMsg]];
     [outMsgTextField setStringValue:[delegate getOutMsg]];
+    
+    // init UI with state
+    [self changeWithInMsgState:[inMsgCheckbox state]];
+    [self changeWithOutMsgState:[outMsgCheckbox state]];
+    [self changeWithEnableVoiceState:[enableVoiceCheckbox state]];
+}
+
+//////////////////////////////////////////////////////////////
+/// init check evnet listener to checkbox
+//////////////////////////////////////////////////////////////
+- (void)initEventListener {
+    [enableVoiceCheckbox setTarget:self];
+    [enableVoiceCheckbox setAction:@selector(enableVoiceStateListener:)];
+    
+    [inMsgCheckbox setTarget:self];
+    [inMsgCheckbox setAction:@selector(inMsgStateListener:)];
+    
+    [outMsgCheckbox setTarget:self];
+    [outMsgCheckbox setAction:@selector(outMsgStateListener:)];
+}
+
+- (void)enableVoiceStateListener:(id)sender {
+    NSButton *checkbox = (NSButton *)sender;
+    NSInteger state = [checkbox state];
+    
+    [self changeWithEnableVoiceState:state];
+}
+
+- (void)inMsgStateListener:(id)sender {
+    NSButton *checkbox = (NSButton *)sender;
+    NSInteger state = [checkbox state];
+    
+    [self changeWithInMsgState:state];
+}
+
+- (void)outMsgStateListener:(id)sender {
+    NSButton *checkbox = (NSButton *)sender;
+    NSInteger state = [checkbox state];
+    
+    [self changeWithOutMsgState:state];
+}
+
+//////////////////////////////////////////////////////////////
+/// change availability between voice message checkbox state
+//////////////////////////////////////////////////////////////
+- (void)changeWithEnableVoiceState:(NSInteger)state {
+    
+    if (state == NSOffState) {
+        // when it is unchecked. let its subitems unable
+        [inMsgCheckbox setEnabled:NO];
+        [outMsgCheckbox setEnabled:NO];
+        [inMsgTextField setEnabled:NO];
+        [outMsgTextField setEnabled:NO];
+    } else {
+        [inMsgCheckbox setEnabled:YES];
+        [outMsgCheckbox setEnabled:YES];
+        
+        
+        [self changeWithInMsgState:[inMsgCheckbox state]];
+        [self changeWithOutMsgState:[outMsgCheckbox state]];
+    }
+}
+
+- (void)changeWithInMsgState:(NSInteger)state {
+    if (state == NSOffState) {
+        // when it is unchecked. let its subitems unable
+        [inMsgTextField setEnabled:NO];
+    } else {
+        [inMsgTextField setEnabled:YES];
+    }
+}
+
+- (void)changeWithOutMsgState:(NSInteger)state {
+    if (state == NSOffState) {
+        // when it is unchecked. let its subitems unable
+        [outMsgTextField setEnabled:NO];
+    } else {
+        [outMsgTextField setEnabled:YES];
+    }
 }
 
 @end
