@@ -53,6 +53,5 @@
 @property (weak) IBOutlet NSTextField *outMsgTextField;
 
 - (id)initWithXibAndDelegate:(NSString *)windowNibName delegate:(id<DataSourceDelegate>)newDelegate;
-- (void)initControl;
 
 @end
