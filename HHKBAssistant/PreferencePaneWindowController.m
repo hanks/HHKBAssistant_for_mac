@@ -16,6 +16,7 @@
 
 @synthesize delegate;
 @synthesize myWindow;
+
 @synthesize autoDisableCheckbox;
 @synthesize enableVoiceCheckbox;
 @synthesize inMsgCheckbox;
@@ -32,16 +33,38 @@
     return self;
 }
 
+- (IBAction)canel:(id)sender {
+    NSLog(@"cacel");
+    [myWindow close];
+}
+
+- (IBAction)save:(id)sender {
+    NSLog(@"save");
+}
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+
 }
 
-- (void)_init {
-    // use preference info from plist to init window control
+- (id)initWithXibAndDelegate:(NSString *)windowNibName delegate:(id<DataSourceDelegate>)newDelegate {
+    if (self = [super initWithWindowNibName:windowNibName]) {
+        self.delegate = newDelegate;
+    }
+    return self;
+}
 
+- (void)initControl {
+    // use preference info from plist to init window control
+    [autoDisableCheckbox setState:[delegate isAutoDisable]];
+    [enableVoiceCheckbox setState:[delegate isEnableVoice]];
+    [inMsgCheckbox setState:[delegate isInMsgEnable]];
+    [outMsgCheckbox setState:[delegate isOutMsgEnable]];
+    [inMsgTextField setStringValue:[delegate getInMsg]];
+    [outMsgTextField setStringValue:[delegate getOutMsg]];
 }
 
 @end
