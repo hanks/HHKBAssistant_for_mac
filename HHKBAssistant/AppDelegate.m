@@ -124,7 +124,13 @@
 }
 
 - (IBAction)openPreferencePane:(id)sender {
-    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithWindowNibName:XIBNAME];
+    // get preference util
+    PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
+    
+    // create window and init
+    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:prefUtil];
+    
+    // show window
     [prefPaneWindowController showWindow:prefPaneWindowController.myWindow];
     // set focus to new window
     NSApplication *myApp = [NSApplication sharedApplication];

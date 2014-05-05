@@ -18,17 +18,17 @@
 
 - (NSMutableArray*) getDeviceArr;
 
-- (BOOL) isAutoDisable;
-- (void) setAutoDisable:(BOOL)flag;
+- (NSInteger) isAutoDisable;
+- (void) setAutoDisable:(NSInteger)flag;
 
-- (BOOL) isEnableVoice;
-- (void) setEnableVoice:(BOOL)flag;
+- (NSInteger) isEnableVoice;
+- (void) setEnableVoice:(NSInteger)flag;
 
-- (BOOL) isInMsgEnable;
-- (void) setInMsgEnable:(BOOL)flag;
+- (NSInteger) isInMsgEnable;
+- (void) setInMsgEnable:(NSInteger)flag;
 
-- (BOOL) isOutMsgEnable;
-- (void) setOutMsgEnable:(BOOL)flag;
+- (NSInteger) isOutMsgEnable;
+- (void) setOutMsgEnable:(NSInteger)flag;
 
 - (NSString *) getInMsg;
 - (void) setInMsg:(NSString *)msg;
@@ -51,5 +51,8 @@
 @property (weak) IBOutlet NSButton *outMsgCheckbox;
 @property (weak) IBOutlet NSTextField *inMsgTextField;
 @property (weak) IBOutlet NSTextField *outMsgTextField;
+
+- (id)initWithXibAndDelegate:(NSString *)windowNibName delegate:(id<DataSourceDelegate>)newDelegate;
+- (void)initControl;
 
 @end

@@ -7,9 +7,9 @@
 	<key>in_message</key>
 	<string>rock n load</string>
 	<key>is_voice_message_out</key>
-	<true/>
+	<false/>
 	<key>is_voice_message_in</key>
-	<true/>
+	<false/>
 	<key>is_voice_message_all</key>
 	<true/>
 	<key>is_auto_disable</key>

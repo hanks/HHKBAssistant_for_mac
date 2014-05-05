@@ -49,49 +49,49 @@
     return [NSMutableArray arrayWithArray:[self read:DEVICES_KEY]];
 }
 
-- (BOOL) isAutoDisable {
+- (NSInteger) isAutoDisable {
     [self update];
-    return [[self read:IS_AUTO_DISABLE_KEY] boolValue];
+    return [[self read:IS_AUTO_DISABLE_KEY] integerValue];
 }
-- (void) setAutoDisable:(BOOL)flag {
+- (void) setAutoDisable:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithBool:flag] forKey:IS_AUTO_DISABLE_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_AUTO_DISABLE_KEY];
     [self write];
 }
 
-- (BOOL) isEnableVoice {
+- (NSInteger) isEnableVoice {
     [self update];
-    return [[self read:IS_VOICE_MESSAGE_ALL_KEY] boolValue];
+    return [[self read:IS_VOICE_MESSAGE_ALL_KEY] integerValue];
 }
-- (void) setEnableVoice:(BOOL)flag {
+- (void) setEnableVoice:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithBool:flag] forKey:IS_VOICE_MESSAGE_ALL_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_VOICE_MESSAGE_ALL_KEY];
     [self write];
 }
 
-- (BOOL) isInMsgEnable {
+- (NSInteger) isInMsgEnable {
     [self update];
-    return [[self read:IS_VOICE_MESSAGE_IN_KEY] boolValue];
+    return [[self read:IS_VOICE_MESSAGE_IN_KEY] integerValue];
 }
-- (void) setInMsgEnable:(BOOL)flag {
+- (void) setInMsgEnable:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithBool:flag] forKey:IS_VOICE_MESSAGE_IN_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_VOICE_MESSAGE_IN_KEY];
     [self write];
 }
 
-- (BOOL) isOutMsgEnable {
+- (NSInteger) isOutMsgEnable {
     [self update];
-    return [[self read:IS_VOICE_MESSAGE_OUT_KEY] boolValue];
+    return [[self read:IS_VOICE_MESSAGE_OUT_KEY] integerValue];
 }
-- (void) setOutMsgEnable:(BOOL)flag {
+- (void) setOutMsgEnable:(NSInteger)flag {
     [self update];
-    [plistDic setObject:[NSNumber numberWithBool:flag] forKey:IS_VOICE_MESSAGE_OUT_KEY];
+    [plistDic setObject:[NSNumber numberWithInteger:flag] forKey:IS_VOICE_MESSAGE_OUT_KEY];
     [self write];
 }
 
 - (NSString *) getInMsg {
     [self update];
-    return [[self read:IN_MESSAGE_KEY] stringValue];
+    return [self read:IN_MESSAGE_KEY];
 }
 - (void) setInMsg:(NSString *)msg {
     [self update];
@@ -101,7 +101,7 @@
 
 - (NSString *) getOutMsg {
     [self update];
-    return [[self read:OUT_MESSAGE_KEY] stringValue];
+    return [self read:OUT_MESSAGE_KEY];
 }
 - (void) setOutMsg:(NSString *)msg {
     [self update];

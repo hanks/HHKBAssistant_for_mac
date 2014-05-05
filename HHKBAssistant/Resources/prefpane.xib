@@ -93,6 +93,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="controlContent"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="canel:" target="-2" id="JhG-9M-m4B"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WWh-DE-Tnj">
                         <rect key="frame" x="320" y="23" width="64" height="19"/>
@@ -101,6 +104,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="controlContent"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="save:" target="-2" id="rvK-US-hYn"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjP-Jz-3xC">
                         <rect key="frame" x="179" y="9" width="118" height="17"/>
