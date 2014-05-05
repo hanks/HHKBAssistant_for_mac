@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		003E51091917E497008961BF /* DataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceDelegate.h; sourceTree = "<group>"; };
 		00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHKBAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EAB1D01915E1AC0028212D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		00EAB1D31915E1AC0028212D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -138,6 +139,7 @@
 				00EAB3151917153E0028212D /* PreferenceUtil.m */,
 				00EAB320191776140028212D /* PreferencePaneWindowController.h */,
 				00EAB321191776140028212D /* PreferencePaneWindowController.m */,
+				003E51091917E497008961BF /* DataSourceDelegate.h */,
 			);
 			path = HHKBAssistant;
 			sourceTree = "<group>";
@@ -393,6 +395,7 @@
 				00EAB2001915E1AC0028212D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
