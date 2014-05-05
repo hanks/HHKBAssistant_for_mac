@@ -24,6 +24,8 @@
 		00EAB2151915E3E30028212D /* icon_48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2101915E3E30028212D /* icon_48x48.png */; };
 		00EAB2161915E3E30028212D /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB2111915E3E30028212D /* icon_64x64.png */; };
 		00EAB31119169EBC0028212D /* USBDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB31019169EBC0028212D /* USBDeviceManager.m */; };
+		00EAB313191714250028212D /* preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB312191714250028212D /* preferences.plist */; };
+		00EAB3161917153E0028212D /* PreferenceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB3151917153E0028212D /* PreferenceUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,9 @@
 		00EAB2111915E3E30028212D /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_64x64.png; sourceTree = "<group>"; };
 		00EAB30F19169EBC0028212D /* USBDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBDeviceManager.h; sourceTree = "<group>"; };
 		00EAB31019169EBC0028212D /* USBDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBDeviceManager.m; sourceTree = "<group>"; };
+		00EAB312191714250028212D /* preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preferences.plist; sourceTree = "<group>"; };
+		00EAB3141917153E0028212D /* PreferenceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceUtil.h; sourceTree = "<group>"; };
+		00EAB3151917153E0028212D /* PreferenceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +128,9 @@
 				00EAB1D71915E1AC0028212D /* Supporting Files */,
 				00EAB30F19169EBC0028212D /* USBDeviceManager.h */,
 				00EAB31019169EBC0028212D /* USBDeviceManager.m */,
+				00EAB312191714250028212D /* preferences.plist */,
+				00EAB3141917153E0028212D /* PreferenceUtil.h */,
+				00EAB3151917153E0028212D /* PreferenceUtil.m */,
 			);
 			path = HHKBAssistant;
 			sourceTree = "<group>";
@@ -210,6 +218,7 @@
 				00EAB2121915E3E30028212D /* icon_128x128.png in Resources */,
 				00EAB2131915E3E30028212D /* icon_16x16.png in Resources */,
 				00EAB1E11915E1AC0028212D /* Credits.rtf in Resources */,
+				00EAB313191714250028212D /* preferences.plist in Resources */,
 				00EAB2141915E3E30028212D /* icon_32x32.png in Resources */,
 				00EAB1E71915E1AC0028212D /* MainMenu.xib in Resources */,
 			);
@@ -222,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EAB3161917153E0028212D /* PreferenceUtil.m in Sources */,
 				00EAB1E41915E1AC0028212D /* AppDelegate.m in Sources */,
 				00EAB31119169EBC0028212D /* USBDeviceManager.m in Sources */,
 				00EAB1DD1915E1AC0028212D /* main.m in Sources */,
