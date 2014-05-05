@@ -11,9 +11,9 @@
 @implementation PreferenceUtil
 
 @synthesize plistDic;
+@synthesize plistPath;
 
 - (NSMutableDictionary *)load {
-    NSString* plistPath = [[NSBundle mainBundle] pathForResource:PREFERENCE_NAME ofType:@"plist"];
     return [[NSMutableDictionary alloc]initWithContentsOfFile:plistPath];
 }
 
@@ -25,17 +25,23 @@
     return [plistDic objectForKey:key];
 }
 
-- (void)write:(NSString *)key value:(NSObject *)value {
-    
+- (void)write {
+    [plistDic writeToFile:plistPath atomically:YES];
 }
 
 #pragma mark delegate Methods
 - (void) addDevice:(NSString *)deviceName {
-    
+    NSMutableArray *arr = [self getDeviceArr];
+    [arr addObject:deviceName];
+    [plistDic setObject:arr forKey:DEVICES_KEY];
+    [self write];
 }
 
 - (void) removeDevice:(NSString *)deviceName {
-    
+    NSMutableArray *arr = [self getDeviceArr];
+    [arr removeObject:deviceName];
+    [plistDic setObject:arr forKey:DEVICES_KEY];
+    [self write];
 }
 
 - (NSMutableArray*) getDeviceArr {
@@ -55,6 +61,9 @@
 
 - (id)init {
     if (self = [super init]) {
+        // init path
+        plistPath = [[NSBundle mainBundle] pathForResource:PREFERENCE_NAME ofType:@"plist"];
+        
         // init
         [self update];
     }
