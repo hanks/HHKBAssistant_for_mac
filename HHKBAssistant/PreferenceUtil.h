@@ -17,14 +17,14 @@
 #define IS_VOICE_MESSAGE_OUT_KEY @"is_voice_message_out_key"
 #define IN_MESSAGE_KEY @"in_message"
 #define OUT_MESSAGE_KEY @"out_message"
-#define IS_AUTO_DISABLE @"is_auto_disable"
+#define IS_AUTO_DISABLE_KEY @"is_auto_disable"
 
 @interface PreferenceUtil : NSObject <DataSourceDelegate>
 
 @property NSMutableDictionary* plistDic;
 @property NSString *plistPath;
 
-- (NSObject *)read:(NSString *)key;
+- (id)read:(NSString *)key;
 - (void)write;
 + (id)getSharedInstance;
 - (void)update;
