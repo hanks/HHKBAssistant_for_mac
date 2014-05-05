@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "USBDeviceManager.h"
 
-#define PREFERENCE_NAME @"preferences.plist"
+#define PREFERENCE_NAME @"preferences"
+#define DEVICES_KEY @"target_devices"
 
-@interface PreferenceUtil : NSObject
+@interface PreferenceUtil : NSObject <DataSourceDelegate>
 
 @property NSMutableDictionary* plistDic;
 

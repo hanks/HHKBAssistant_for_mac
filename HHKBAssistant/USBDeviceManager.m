@@ -15,6 +15,7 @@
 @synthesize gAddedIter;
 @synthesize gRunLoop;
 @synthesize targetDeviceArr;
+@synthesize delegate;
 
 //////////////////////////////////////////////////
 // wrapper object-c method to c callback function
@@ -73,11 +74,6 @@ static void SignalHandler(int sigraised) {
         privateDataRef = NULL;
         UInt32			locationID;
         
-        printf("Device added.\n");
-        
-        // voice
-        system("say HHKB Professional is ready");
-        
         // Add some app-specific information about this device.
         // Create a buffer to hold the data.
         privateDataRef = malloc(sizeof(MyPrivateData));
@@ -92,63 +88,71 @@ static void SignalHandler(int sigraised) {
         deviceNameAsCFString = CFStringCreateWithCString(kCFAllocatorDefault, deviceName,
                                                          kCFStringEncodingASCII);
         
-        // Dump our data to stderr just to see what it looks like.
-        NSLog(@"deviceName: ");
-        CFShow(deviceNameAsCFString);
-        
-        // Save the device's name to our private data.
-        privateDataRef->deviceName = deviceNameAsCFString;
-        
-        // Now, get the locationID of this device. In order to do this, we need to create an IOUSBDeviceInterface
-        // for our device. This will create the necessary connections between our userland application and the
-        // kernel object for the USB Device.
-        kr = IOCreatePlugInInterfaceForService(usbDevice, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID,
-                                               &plugInInterface, &score);
-        
-        if ((kIOReturnSuccess != kr) || !plugInInterface) {
-            NSLog(@"IOCreatePlugInInterfaceForService returned 0x%08x.\n", kr);
-            continue;
-        }
-        
-        // Use the plugin interface to retrieve the device interface.
-        res = (*plugInInterface)->QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID),
-                                                 (LPVOID*) &privateDataRef->deviceInterface);
-        
-        // Now done with the plugin interface.
-        (*plugInInterface)->Release(plugInInterface);
-        
-        if (res || privateDataRef->deviceInterface == NULL) {
-            NSLog(@"QueryInterface returned %d.\n", (int) res);
-            continue;
-        }
-        
-        // Now that we have the IOUSBDeviceInterface, we can call the routines in IOUSBLib.h.
-        // In this case, fetch the locationID. The locationID uniquely identifies the device
-        // and will remain the same, even across reboots, so long as the bus topology doesn't change.
-        
-        kr = (*privateDataRef->deviceInterface)->GetLocationID(privateDataRef->deviceInterface, &locationID);
-        if (KERN_SUCCESS != kr) {
-            NSLog(@"GetLocationID returned 0x%08x.\n", kr);
-            continue;
-        }
-        else {
-            NSLog(@"Location ID: %u\n\n", locationID);
-        }
-        
-        privateDataRef->locationID = locationID;
-        
-        // Register for an interest notification of this device being removed. Use a reference to our
-        // private data as the refCon which will be passed to the notification callback.
-        kr = IOServiceAddInterestNotification(gNotifyPort,						// notifyPort
-											  usbDevice,						// service
-											  kIOGeneralInterest,				// interestType
-											  DeviceNotification,				// callback
-											  (__bridge void *)self,					// refCon
-											  &(privateDataRef->notification)	// notification
-											  );
-        
-        if (KERN_SUCCESS != kr) {
-            NSLog(@"IOServiceAddInterestNotification returned 0x%08x.\n", kr);
+        // compare device name to target device
+        for (int i = 0; i < [targetDeviceArr count]; i++) {
+            NSString *targetDeviceName = [targetDeviceArr objectAtIndex:i];
+            if (strcmp(deviceName, [targetDeviceName UTF8String]) == 0) {
+                // if hit, do action
+                
+                // voice
+                system("say HHKB Professional is ready");
+                
+                // Save the device's name to our private data.
+                privateDataRef->deviceName = deviceNameAsCFString;
+                
+                // Now, get the locationID of this device. In order to do this, we need to create an IOUSBDeviceInterface
+                // for our device. This will create the necessary connections between our userland application and the
+                // kernel object for the USB Device.
+                kr = IOCreatePlugInInterfaceForService(usbDevice, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID,
+                                                       &plugInInterface, &score);
+                
+                if ((kIOReturnSuccess != kr) || !plugInInterface) {
+                    NSLog(@"IOCreatePlugInInterfaceForService returned 0x%08x.\n", kr);
+                    continue;
+                }
+                
+                // Use the plugin interface to retrieve the device interface.
+                res = (*plugInInterface)->QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID),
+                                                         (LPVOID*) &privateDataRef->deviceInterface);
+                
+                // Now done with the plugin interface.
+                (*plugInInterface)->Release(plugInInterface);
+                
+                if (res || privateDataRef->deviceInterface == NULL) {
+                    NSLog(@"QueryInterface returned %d.\n", (int) res);
+                    continue;
+                }
+                
+                // Now that we have the IOUSBDeviceInterface, we can call the routines in IOUSBLib.h.
+                // In this case, fetch the locationID. The locationID uniquely identifies the device
+                // and will remain the same, even across reboots, so long as the bus topology doesn't change.
+                
+                kr = (*privateDataRef->deviceInterface)->GetLocationID(privateDataRef->deviceInterface, &locationID);
+                if (KERN_SUCCESS != kr) {
+                    NSLog(@"GetLocationID returned 0x%08x.\n", kr);
+                    continue;
+                }
+                else {
+                    NSLog(@"Location ID: %u\n\n", locationID);
+                }
+                
+                privateDataRef->locationID = locationID;
+                
+                // Register for an interest notification of this device being removed. Use a reference to our
+                // private data as the refCon which will be passed to the notification callback.
+                kr = IOServiceAddInterestNotification(gNotifyPort,						// notifyPort
+                                                      usbDevice,						// service
+                                                      kIOGeneralInterest,				// interestType
+                                                      DeviceNotification,				// callback
+                                                      (__bridge void *)self,					// refCon
+                                                      &(privateDataRef->notification)	// notification
+                                                      );
+                
+                if (KERN_SUCCESS != kr) {
+                    NSLog(@"IOServiceAddInterestNotification returned 0x%08x.\n", kr);
+                }
+
+            }
         }
         
         // Done with this USB device; release the reference added by IOIteratorNext
@@ -206,14 +210,19 @@ static void SignalHandler(int sigraised) {
     NSLog(@"Unexpectedly back from CFRunLoopRun()!\n");
     // 1: error status
     // 0: ok status
-    return 0;
+    return 1;
 }
 
-- (id) init {
-    if (self = [super init]) {
-        targetDeviceArr = [[NSMutableArray alloc] init];
-    }
-    return self;
+- (void) addDevice:(NSString *)deviceName {
+    [delegate addDevice:deviceName];
+}
+
+- (void) removeDevice:(NSString *)deviceName {
+    [delegate removeDevice:deviceName];
+}
+
+- (void)updateDeviceArr {
+    targetDeviceArr = [delegate getDeviceArr];
 }
 
 @end
