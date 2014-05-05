@@ -15,6 +15,7 @@
 @synthesize gAddedIter;
 @synthesize gRunLoop;
 @synthesize targetDeviceArr;
+@synthesize delegate;
 
 
 //////////////////////////////////////////////////
@@ -41,7 +42,11 @@ static void SignalHandler(int sigraised) {
     
     if (messageType == kIOMessageServiceIsTerminated) {
         NSLog(@"Device removed.\n");
-        
+        ///////////////////////////
+        // voice out message
+        ///////////////////////////
+        [self doOutMessage:(char *)privateDataRef->deviceName];
+
         // Dump our private data to stderr just to see what it looks like.
         NSLog(@"privateDataRef->deviceName: ");
 		CFShow(privateDataRef->deviceName);
@@ -94,8 +99,10 @@ static void SignalHandler(int sigraised) {
             if (strcmp(deviceName, [targetDeviceName UTF8String]) == 0) {
                 // if hit, do action
                 
-                // voice
-                [self voiceMessage:@"HHKB Professional is ready"];
+                ///////////////////////////
+                // voice in message
+                ///////////////////////////
+                [self doInMessage:deviceName];
                 
                 // Save the device's name to our private data.
                 privateDataRef->deviceName = deviceNameAsCFString;
@@ -211,6 +218,46 @@ static void SignalHandler(int sigraised) {
     // 1: error status
     // 0: ok status
     return 1;
+}
+
+- (void) doInMessage:(char *)deviceName {
+    // check Enable voice flag
+    NSInteger flag = [delegate isEnableVoice];
+    if (flag == NSOffState) {
+        // do nothing
+    } else {
+        // check in message flag
+        flag = [delegate isInMsgEnable];
+        if (flag == NSOffState) {
+            // do nothing
+        } else {
+            // do voice message action
+            // get in text input
+            NSString *textInput = [delegate getInMsg];
+            NSString *msg = [NSString stringWithFormat:@"%s %@", deviceName, textInput];
+            [self voiceMessage:msg];
+        }
+    }
+}
+
+- (void) doOutMessage:(char *)deviceName {
+    // check Enable voice flag
+    NSInteger flag = [delegate isEnableVoice];
+    if (flag == NSOffState) {
+        // do nothing
+    } else {
+        // check in message flag
+        flag = [delegate isOutMsgEnable];
+        if (flag == NSOffState) {
+            // do nothing
+        } else {
+            // do voice message action
+            // get out text input
+            NSString *textInput = [delegate getOutMsg];
+            NSString *msg = [NSString stringWithFormat:@"%s %@", deviceName, textInput];
+            [self voiceMessage:msg];
+        }
+    }
 }
 
 - (void) voiceMessage:(NSString *)msg {
