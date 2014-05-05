@@ -10,10 +10,14 @@
 #import <IOKit/kext/KextManager.h>
 #import <ServiceManagement/ServiceManagement.h>
 
+
 #define BUILD_IN_KEYBOARD_ENABLE 1
 #define BUILD_IN_KEYBOARD_DISABLE 0
 
 @implementation AppDelegate
+
+@synthesize usbManager;
+@synthesize statusMenu;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -26,25 +30,8 @@
         NSLog(@"%@: %@", key, kexts[key]);
     }
     
-//    myAuthRef = [self authenticateForKbKext];
-    
-    
-//    char myToolPath[] = "/sbin/kextload";
-//    char *myArguments[] = { [kexts[@"OSBundlePath"] UTF8String], NULL };
-//    FILE *myCommunicationsPipe = NULL;
-//    char myReadBuffer[128];
-//    
-//    AuthorizationFlags myFlags = kAuthorizationFlagDefaults;                          // 8
-//    OSStatus myStatus = AuthorizationExecuteWithPrivileges                  // 9
-//    (myAuthRef, myToolPath, myFlags, myArguments, &myCommunicationsPipe);
-//    
-//    NSLog(@"%d\n", myStatus);
-//    NSLog(@"%d", kOSReturnSuccess);
-//    
-//    if (myAuthRef == NULL) {
-//        [self freeAuthRef:myAuthRef];
-//    }
-    
+    // set up listener in background the thread
+    [NSThread detachNewThreadSelector:@selector(setupListener) toTarget:usbManager withObject:nil];
 }
 
 - (AuthorizationRef) authenticateForKbKext {
@@ -83,12 +70,10 @@
     
 }
 
-
-
 - (void)awakeFromNib {
     // add status icon to system menu bar
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [statusItem setMenu:_statusMenu];
+    [statusItem setMenu:statusMenu];
     
     // set status bar icon
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"icon_16x16" ofType:@"png"];
@@ -100,6 +85,9 @@
     // init keyboard change menu title
     self.kbStatus = BUILD_IN_KEYBOARD_DISABLE;
     [self setKbChangeMenuTitle:self.kbStatus];
+    
+    // init usb device manager
+    usbManager = [[USBDeviceManager alloc] init];
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {

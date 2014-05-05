@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "USBDeviceManager.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem * statusItem;
@@ -17,5 +18,6 @@
 @property (weak) IBOutlet NSMenuItem *kbChangeMenu;
 @property BOOL kbStatus;
 @property NSString *kbKextIdentifier;
+@property USBDeviceManager *usbManager;
 
 @end
