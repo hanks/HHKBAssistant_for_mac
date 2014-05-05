@@ -45,6 +45,9 @@
 // delegate for plist data source
 @property (nonatomic, assign) id<DataSourceDelegate>  delegate;
 
+////////////
+/// Controls
+////////////
 @property (weak) IBOutlet NSButton *autoDisableCheckbox;
 @property (weak) IBOutlet NSButton *enableVoiceCheckbox;
 @property (weak) IBOutlet NSButton *inMsgCheckbox;

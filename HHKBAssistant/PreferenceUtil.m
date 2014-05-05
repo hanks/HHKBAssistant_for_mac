@@ -13,6 +13,7 @@
 @synthesize plistDic;
 @synthesize plistPath;
 
+#pragma mark basic function Methods
 - (NSMutableDictionary *)load {
     return [[NSMutableDictionary alloc]initWithContentsOfFile:plistPath];
 }
@@ -30,6 +31,9 @@
 }
 
 #pragma mark delegate Methods
+/////////////////////////////////////////////////////////
+//// some get and set method to process property of plist
+/////////////////////////////////////////////////////////
 - (void) addDevice:(NSString *)deviceName {
     NSMutableArray *arr = [self getDeviceArr];
     [arr addObject:deviceName];
