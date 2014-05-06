@@ -61,10 +61,10 @@
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
     switch (kbStatus) {
         case BUILD_IN_KEYBOARD_DISABLE:
-            [self.kbChangeMenu setTitle:@"Enable Build-in Keyboard"];
+            [self.kbChangeMenu setTitle:ENABLE_AUTO_MENU_TITLE];
             break;
         case BUILD_IN_KEYBOARD_ENABLE:
-            [self.kbChangeMenu setTitle:@"Disable Build-in Keyboard"];
+            [self.kbChangeMenu setTitle:DISABLE_AUTO_MENU_TITLE];
             break;
     }
 }
