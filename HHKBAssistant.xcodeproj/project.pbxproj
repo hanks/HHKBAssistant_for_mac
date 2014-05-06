@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003E510D1918A91F008961BF /* ding.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 003E510C1918A91F008961BF /* ding.WAV */; };
 		00EAB1D11915E1AC0028212D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB1D01915E1AC0028212D /* Cocoa.framework */; };
 		00EAB1DB1915E1AC0028212D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1D91915E1AC0028212D /* InfoPlist.strings */; };
 		00EAB1DD1915E1AC0028212D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB1DC1915E1AC0028212D /* main.m */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		003E51091917E497008961BF /* DataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceDelegate.h; sourceTree = "<group>"; };
+		003E510A1918A7F5008961BF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		003E510C1918A91F008961BF /* ding.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.WAV; sourceTree = "<group>"; };
 		00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHKBAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EAB1D01915E1AC0028212D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		00EAB1D31915E1AC0028212D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -102,6 +105,7 @@
 		00EAB1CF1915E1AC0028212D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				003E510A1918A7F5008961BF /* CoreAudio.framework */,
 				00EAB20A1915E3B00028212D /* CoreFoundation.framework */,
 				00EAB2081915E3AA0028212D /* IOKit.framework */,
 				00EAB2061915E3A40028212D /* ServiceManagement.framework */,
@@ -159,6 +163,7 @@
 		00EAB20C1915E3E30028212D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				003E510C1918A91F008961BF /* ding.WAV */,
 				00EAB20D1915E3E30028212D /* icon_128x128.png */,
 				00EAB20E1915E3E30028212D /* icon_16x16.png */,
 				00EAB20F1915E3E30028212D /* icon_32x32.png */,
@@ -223,6 +228,7 @@
 			files = (
 				00EAB2161915E3E30028212D /* icon_64x64.png in Resources */,
 				00EAB1DB1915E1AC0028212D /* InfoPlist.strings in Resources */,
+				003E510D1918A91F008961BF /* ding.WAV in Resources */,
 				00EAB31F191774220028212D /* prefpane.xib in Resources */,
 				00EAB2151915E3E30028212D /* icon_48x48.png in Resources */,
 				00EAB1E91915E1AC0028212D /* Images.xcassets in Resources */,
