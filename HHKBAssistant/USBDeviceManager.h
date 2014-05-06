@@ -15,6 +15,17 @@
 #include <IOKit/usb/IOUSBLib.h>
 #import "DataSourceDelegate.h"
 
+typedef struct MyPrivateData {
+    io_object_t				notification;
+    IOUSBDeviceInterface	**deviceInterface;
+    UInt32					locationID;
+    
+    // device name
+    char                    deviceName[128];
+    // additonal point to usb manager, used in device notification method
+    void                    *usbManageRef;
+} MyPrivateData;
+
 @interface USBDeviceManager : NSObject {
 
 }
@@ -29,7 +40,7 @@
 @property io_iterator_t			gAddedIter;
 @property CFRunLoopRef			gRunLoop;
 
-- (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument;
+- (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument privateDataRef:(MyPrivateData *)privateDataRef;
 - (void) detectDeviceAdded:(io_iterator_t) iterator;
 
 // main function to set run loop to listen to usb device
