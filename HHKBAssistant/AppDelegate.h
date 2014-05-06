@@ -10,16 +10,19 @@
 #import "USBDeviceManager.h"
 #import "PreferencePaneWindowController.h"
 
+#define BUILD_IN_KEYBOARD_ENABLE 1
+#define BUILD_IN_KEYBOARD_DISABLE 0
+#define kHelperBundleID @"DisableKeyboardHelper"
+
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem * statusItem;
-    AuthorizationRef myAuthRef;
 }
 
-@property (strong) PreferencePaneWindowController *prefPaneWindowController;
 @property (assign) IBOutlet NSMenu *statusMenu;
 @property (weak) IBOutlet NSMenuItem *kbChangeMenu;
 @property BOOL kbStatus;
-@property NSString *kbKextIdentifier;
+
+@property (strong) PreferencePaneWindowController *prefPaneWindowController;
 @property USBDeviceManager *usbManager;
 
 @end
