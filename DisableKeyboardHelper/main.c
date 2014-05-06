@@ -32,8 +32,6 @@ static void __XPC_Peer_Event_Handler(xpc_connection_t connection, xpc_object_t e
         const char *request = xpc_dictionary_get_string(event, REQUEST_KEY);
         if (request != NULL) {
             // handle request
-            syslog(LOG_NOTICE, request);
-            
             OSReturn ret;
             
             if (strcmp(request, DISABLE_KEYBOARD_REQUEST) == 0) {
