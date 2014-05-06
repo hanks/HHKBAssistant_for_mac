@@ -61,7 +61,7 @@
 		00EAB2111915E3E30028212D /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_64x64.png; sourceTree = "<group>"; };
 		00EAB30F19169EBC0028212D /* USBDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBDeviceManager.h; sourceTree = "<group>"; };
 		00EAB31019169EBC0028212D /* USBDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBDeviceManager.m; sourceTree = "<group>"; };
-		00EAB312191714250028212D /* preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preferences.plist; sourceTree = "<group>"; };
+		00EAB312191714250028212D /* preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = preferences.plist; path = ../preferences.plist; sourceTree = "<group>"; };
 		00EAB3141917153E0028212D /* PreferenceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceUtil.h; sourceTree = "<group>"; };
 		00EAB3151917153E0028212D /* PreferenceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceUtil.m; sourceTree = "<group>"; };
 		00EAB31E191774220028212D /* prefpane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = prefpane.xib; sourceTree = "<group>"; };
@@ -138,7 +138,6 @@
 				00EAB1D71915E1AC0028212D /* Supporting Files */,
 				00EAB30F19169EBC0028212D /* USBDeviceManager.h */,
 				00EAB31019169EBC0028212D /* USBDeviceManager.m */,
-				00EAB312191714250028212D /* preferences.plist */,
 				00EAB3141917153E0028212D /* PreferenceUtil.h */,
 				00EAB3151917153E0028212D /* PreferenceUtil.m */,
 				00EAB320191776140028212D /* PreferencePaneWindowController.h */,
@@ -170,6 +169,7 @@
 				00EAB2101915E3E30028212D /* icon_48x48.png */,
 				00EAB2111915E3E30028212D /* icon_64x64.png */,
 				00EAB31E191774220028212D /* prefpane.xib */,
+				00EAB312191714250028212D /* preferences.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
