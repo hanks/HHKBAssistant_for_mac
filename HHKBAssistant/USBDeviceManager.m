@@ -8,13 +8,6 @@
 
 #import "USBDeviceManager.h"
 
-typedef struct MyPrivateData {
-    io_object_t				notification;
-    IOUSBDeviceInterface	**deviceInterface;
-    CFStringRef				deviceName;
-    UInt32					locationID;
-} MyPrivateData;
-
 @implementation USBDeviceManager
 
 @synthesize gNotifyPort;
@@ -26,7 +19,10 @@ typedef struct MyPrivateData {
 // wrapper object-c method to c callback function
 //////////////////////////////////////////////////
 static void DeviceNotification(void *refCon, io_service_t service, natural_t messageType, void *messageArgument) {
-    [(__bridge USBDeviceManager *)refCon addDeviceNotification:service messageType:messageType messageArgument:messageArgument];
+    // because need to use device info when device is removed and need to use wrapped
+    // obj method
+    MyPrivateData	*privateDataRef = (MyPrivateData *)refCon;
+    [(__bridge USBDeviceManager *)privateDataRef->usbManageRef addDeviceNotification:service messageType:messageType messageArgument:messageArgument privateDataRef:privateDataRef];
 }
 
 static void DeviceAdded(void *refCon, io_iterator_t iterator) {
@@ -41,27 +37,21 @@ static void SignalHandler(int sigraised) {
 // wrapper end
 //////////////////////////////////////////////////
 
-- (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument {
+- (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument privateDataRef:(MyPrivateData *)privateDataRef {
     kern_return_t	kr;
-    MyPrivateData	*privateDataRef = NULL;
     
     if (messageType == kIOMessageServiceIsTerminated) {
-        NSLog(@"Device removed.\n");
         ///////////////////////////
         // voice out message
         ///////////////////////////
-        [self doOutMessage:(char *)privateDataRef->deviceName];
+        [self doOutMessage:privateDataRef->deviceName];
 
         // Dump our private data to stderr just to see what it looks like.
-        NSLog(@"privateDataRef->deviceName: ");
-		CFShow(privateDataRef->deviceName);
-		NSLog(@"privateDataRef->locationID: %u.\n\n", privateDataRef->locationID);
-        
-        // Free the data we're no longer using now that the device is going away
-        CFRelease(privateDataRef->deviceName);
+        //NSLog(@"privateDataRef->deviceName: %s", privateDataRef->deviceName);
+		//NSLog(@"privateDataRef->locationID: %u.\n\n", privateDataRef->locationID);
         
         if (privateDataRef->deviceInterface) {
-            kr = (*privateDataRef->deviceInterface)->Release(privateDataRef->deviceInterface);
+            (*privateDataRef->deviceInterface)->Release(privateDataRef->deviceInterface);
         }
         
         kr = IOObjectRelease(privateDataRef->notification);
@@ -80,7 +70,6 @@ static void SignalHandler(int sigraised) {
     
     while ((usbDevice = IOIteratorNext(iterator))) {
         io_name_t		deviceName;
-        CFStringRef		deviceNameAsCFString;
         MyPrivateData	*privateDataRef = NULL;
         UInt32			locationID;
         
@@ -95,7 +84,7 @@ static void SignalHandler(int sigraised) {
             deviceName[0] = '\0';
         }
         
-        deviceNameAsCFString = CFStringCreateWithCString(kCFAllocatorDefault, deviceName,
+        CFStringCreateWithCString(kCFAllocatorDefault, deviceName,
                                                          kCFStringEncodingASCII);
         
         // compare device name to target device
@@ -111,7 +100,7 @@ static void SignalHandler(int sigraised) {
                 [self doInMessage:deviceName];
                 
                 // Save the device's name to our private data.
-                privateDataRef->deviceName = deviceNameAsCFString;
+                strcpy(privateDataRef->deviceName, deviceName);
                 
                 // Now, get the locationID of this device. In order to do this, we need to create an IOUSBDeviceInterface
                 // for our device. This will create the necessary connections between our userland application and the
@@ -147,13 +136,16 @@ static void SignalHandler(int sigraised) {
                 }
                 privateDataRef->locationID = locationID;
                 
+                // save self point to privateDataRef
+                privateDataRef->usbManageRef = (__bridge void *)(self);
+                
                 // Register for an interest notification of this device being removed. Use a reference to our
                 // private data as the refCon which will be passed to the notification callback.
                 kr = IOServiceAddInterestNotification(gNotifyPort,						// notifyPort
                                                       usbDevice,						// service
                                                       kIOGeneralInterest,				// interestType
                                                       DeviceNotification,				// callback
-                                                      (__bridge void *)self,					// refCon
+                                                      privateDataRef,					// refCon
                                                       &(privateDataRef->notification)	// notification
                                                       );
                 

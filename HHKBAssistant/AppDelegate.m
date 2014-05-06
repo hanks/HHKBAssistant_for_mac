@@ -36,42 +36,42 @@
     // set up listener in background the thread
     [NSThread detachNewThreadSelector:@selector(setupListener) toTarget:usbManager withObject:nil];
 }
-
-- (AuthorizationRef) authenticateForKbKext {
-    // get authorization
-    AuthorizationRef myAuthorizationRef;
-    OSStatus myStatus;
-    myStatus = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment,
-                                   kAuthorizationFlagDefaults, &myAuthorizationRef);
-    // ask for just one auth
-    AuthorizationItem myItems[1];
-    
-    // kext auth
-    myItems[0].name = [self.kbKextIdentifier UTF8String];
-    myItems[0].valueLength = 0;
-    myItems[0].value = NULL;
-    myItems[0].flags = 0;
-    
-    AuthorizationRights myRights;
-    myRights.count = sizeof (myItems) / sizeof (myItems[0]);
-    myRights.items = myItems;
-    
-    AuthorizationFlags myFlags;
-    myFlags = kAuthorizationFlagDefaults |
-    kAuthorizationFlagInteractionAllowed |
-    kAuthorizationFlagExtendRights;
-    
-    myStatus = AuthorizationCopyRights(myAuthorizationRef, &myRights,
-                                       kAuthorizationEmptyEnvironment, myFlags, NULL);
-    return myAuthorizationRef;
-}
-
-- (void) freeAuthRef: (AuthorizationRef)authRef {
-    // free authrization
-    AuthorizationFree (authRef,
-                       kAuthorizationFlagDestroyRights);
-    
-}
+//
+//- (AuthorizationRef) authenticateForKbKext {
+//    // get authorization
+//    AuthorizationRef myAuthorizationRef;
+//    OSStatus myStatus;
+//    myStatus = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment,
+//                                   kAuthorizationFlagDefaults, &myAuthorizationRef);
+//    // ask for just one auth
+//    AuthorizationItem myItems[1];
+//    
+//    // kext auth
+//    myItems[0].name = [self.kbKextIdentifier UTF8String];
+//    myItems[0].valueLength = 0;
+//    myItems[0].value = NULL;
+//    myItems[0].flags = 0;
+//    
+//    AuthorizationRights myRights;
+//    myRights.count = sizeof (myItems) / sizeof (myItems[0]);
+//    myRights.items = myItems;
+//    
+//    AuthorizationFlags myFlags;
+//    myFlags = kAuthorizationFlagDefaults |
+//    kAuthorizationFlagInteractionAllowed |
+//    kAuthorizationFlagExtendRights;
+//    
+//    myStatus = AuthorizationCopyRights(myAuthorizationRef, &myRights,
+//                                       kAuthorizationEmptyEnvironment, myFlags, NULL);
+//    return myAuthorizationRef;
+//}
+//
+//- (void) freeAuthRef: (AuthorizationRef)authRef {
+//    // free authrization
+//    AuthorizationFree (authRef,
+//                       kAuthorizationFlagDestroyRights);
+//    
+//}
 
 - (void)awakeFromNib {
     // add status icon to system menu bar
