@@ -24,8 +24,8 @@
 
 #define XIBNAME @"prefpane"
 
-#define ENABLE_KEYBOARD_REQUEST "enable build in keyboard"
-#define DISABLE_KEYBOARD_REQUEST "disable build in keyboard"
+#define ENABLE_KEYBOARD_REQUEST "enable build-in keyboard"
+#define DISABLE_KEYBOARD_REQUEST "disable build-in keyboard"
 #define REQUEST_KEY "request"
 #define RESPONSE_KEY "reply"
 
