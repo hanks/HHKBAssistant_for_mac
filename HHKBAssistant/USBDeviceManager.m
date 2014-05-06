@@ -8,15 +8,19 @@
 
 #import "USBDeviceManager.h"
 
+typedef struct MyPrivateData {
+    io_object_t				notification;
+    IOUSBDeviceInterface	**deviceInterface;
+    CFStringRef				deviceName;
+    UInt32					locationID;
+} MyPrivateData;
+
 @implementation USBDeviceManager
 
-@synthesize privateDataRef;
 @synthesize gNotifyPort;
 @synthesize gAddedIter;
 @synthesize gRunLoop;
-@synthesize targetDeviceArr;
 @synthesize delegate;
-
 
 //////////////////////////////////////////////////
 // wrapper object-c method to c callback function
@@ -39,6 +43,7 @@ static void SignalHandler(int sigraised) {
 
 - (void) addDeviceNotification:(io_service_t)service messageType:(natural_t)messageType messageArgument:(void *)messageArgument {
     kern_return_t	kr;
+    MyPrivateData	*privateDataRef = NULL;
     
     if (messageType == kIOMessageServiceIsTerminated) {
         NSLog(@"Device removed.\n");
@@ -76,7 +81,7 @@ static void SignalHandler(int sigraised) {
     while ((usbDevice = IOIteratorNext(iterator))) {
         io_name_t		deviceName;
         CFStringRef		deviceNameAsCFString;
-        privateDataRef = NULL;
+        MyPrivateData	*privateDataRef = NULL;
         UInt32			locationID;
         
         // Add some app-specific information about this device.
@@ -94,6 +99,7 @@ static void SignalHandler(int sigraised) {
                                                          kCFStringEncodingASCII);
         
         // compare device name to target device
+        NSMutableArray* targetDeviceArr = [delegate getDeviceArr];
         for (int i = 0; i < [targetDeviceArr count]; i++) {
             NSString *targetDeviceName = [targetDeviceArr objectAtIndex:i];
             if (strcmp(deviceName, [targetDeviceName UTF8String]) == 0) {
@@ -139,10 +145,6 @@ static void SignalHandler(int sigraised) {
                     NSLog(@"GetLocationID returned 0x%08x.\n", kr);
                     continue;
                 }
-                else {
-                    NSLog(@"Location ID: %u\n\n", locationID);
-                }
-                
                 privateDataRef->locationID = locationID;
                 
                 // Register for an interest notification of this device being removed. Use a reference to our
@@ -163,7 +165,8 @@ static void SignalHandler(int sigraised) {
         }
         
         // Done with this USB device; release the reference added by IOIteratorNext
-        kr = IOObjectRelease(usbDevice);
+        // do not need to handle return value
+        IOObjectRelease(usbDevice);
     }
 
 }
@@ -263,10 +266,6 @@ static void SignalHandler(int sigraised) {
 - (void) voiceMessage:(NSString *)msg {
     NSString *command = [NSString stringWithFormat:@"say %@", msg];
     system([command UTF8String]);
-}
-
-- (void) updateDeviceArr:(NSMutableArray *)newArr {
-    targetDeviceArr = newArr;
 }
 
 @end
