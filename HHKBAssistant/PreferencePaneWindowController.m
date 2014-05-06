@@ -61,6 +61,9 @@
     
     text = [outMsgTextField stringValue];
     [delegate setOutMsg:text];
+    
+    // player sound effect to notify user action
+    [self playSoundEffect];
 }
 
 - (void)windowDidLoad
@@ -148,6 +151,12 @@
         [self changeWithInMsgState:[inMsgCheckbox state]];
         [self changeWithOutMsgState:[outMsgCheckbox state]];
     }
+}
+
+- (void)playSoundEffect {
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"ding" ofType:@"WAV"];
+    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
+    [sound play];
 }
 
 - (void)changeWithInMsgState:(NSInteger)state {
