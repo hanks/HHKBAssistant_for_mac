@@ -7,14 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import <IOKit/kext/KextManager.h>
 #import <ServiceManagement/ServiceManagement.h>
 #import "PreferenceUtil.h"
 
-
-
 #define BUILD_IN_KEYBOARD_ENABLE 1
 #define BUILD_IN_KEYBOARD_DISABLE 0
+#define kHelperBundleID @"DisableKeyboardHelper"
 
 @implementation AppDelegate
 
@@ -24,54 +22,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
-//    self.kbKextIdentifier = @"com.apple.driver.AppleUSBTCKeyboard";
-//    NSDictionary *kexts = (__bridge NSDictionary *)KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: self.kbKextIdentifier], NULL);
-//    
-//    
-//    for (id key in kexts) {
-//        NSLog(@"%@: %@", key, kexts[key]);
-//    }
-    
     // set up listener in background the thread
     [NSThread detachNewThreadSelector:@selector(setupListener) toTarget:usbManager withObject:nil];
+    
+    // register helper tool
+    [self addHelper];
 }
-//
-//- (AuthorizationRef) authenticateForKbKext {
-//    // get authorization
-//    AuthorizationRef myAuthorizationRef;
-//    OSStatus myStatus;
-//    myStatus = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment,
-//                                   kAuthorizationFlagDefaults, &myAuthorizationRef);
-//    // ask for just one auth
-//    AuthorizationItem myItems[1];
-//    
-//    // kext auth
-//    myItems[0].name = [self.kbKextIdentifier UTF8String];
-//    myItems[0].valueLength = 0;
-//    myItems[0].value = NULL;
-//    myItems[0].flags = 0;
-//    
-//    AuthorizationRights myRights;
-//    myRights.count = sizeof (myItems) / sizeof (myItems[0]);
-//    myRights.items = myItems;
-//    
-//    AuthorizationFlags myFlags;
-//    myFlags = kAuthorizationFlagDefaults |
-//    kAuthorizationFlagInteractionAllowed |
-//    kAuthorizationFlagExtendRights;
-//    
-//    myStatus = AuthorizationCopyRights(myAuthorizationRef, &myRights,
-//                                       kAuthorizationEmptyEnvironment, myFlags, NULL);
-//    return myAuthorizationRef;
-//}
-//
-//- (void) freeAuthRef: (AuthorizationRef)authRef {
-//    // free authrization
-//    AuthorizationFree (authRef,
-//                       kAuthorizationFlagDestroyRights);
-//    
-//}
 
 - (void)awakeFromNib {
     // add status icon to system menu bar
@@ -214,6 +170,76 @@
 			}
 		}
 	}
+}
+
+////////////////////////////////////////////
+////// Disable keyboard helper util method
+////////////////////////////////////////////
+#pragma mark Helper Util Method
+- (void)addHelper {
+    // copy helper execute binary file to /Library/PrivilegedHelperTools
+    // copy helper launchd settings plist file to /Library/LaunchDaemons
+    NSDictionary *helperInfo = (__bridge NSDictionary*)SMJobCopyDictionary(kSMDomainSystemLaunchd,
+                                                                           (__bridge CFStringRef)kHelperBundleID);
+    if (!helperInfo)
+    {
+        AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
+        AuthorizationRights authRights = { 1, &authItem };
+        AuthorizationFlags flags = kAuthorizationFlagDefaults|
+        kAuthorizationFlagInteractionAllowed|
+        kAuthorizationFlagPreAuthorize|
+        kAuthorizationFlagExtendRights;
+        
+        AuthorizationRef authRef = NULL;
+        OSStatus status = AuthorizationCreate(&authRights, kAuthorizationEmptyEnvironment, flags, &authRef);
+        if (status != errAuthorizationSuccess)
+        {
+            NSLog(@"Failed to create AuthorizationRef, return code %i", status);
+        } else
+        {
+            CFErrorRef error = NULL;
+            BOOL result = SMJobBless(kSMDomainSystemLaunchd, (__bridge CFStringRef)kHelperBundleID, authRef, &error);
+            if (!result)
+            {
+                NSLog(@"SMJobBless Failed, error : %@",error);
+            } else {
+                NSLog(@"SMJobBless is done");
+            }
+        }
+    } else {
+        NSLog(@"already registered!!");
+    }
+}
+
+- (void)removeHelper {
+    NSDictionary *helperInfo = (__bridge NSDictionary*)SMJobCopyDictionary(kSMDomainSystemLaunchd,
+                                                                           (__bridge CFStringRef)kHelperBundleID);
+    if (helperInfo)
+    {
+        AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
+        AuthorizationRights authRights = { 1, &authItem };
+        AuthorizationFlags flags = kAuthorizationFlagDefaults|
+        kAuthorizationFlagInteractionAllowed|
+        kAuthorizationFlagPreAuthorize|
+        kAuthorizationFlagExtendRights;
+        
+        AuthorizationRef authRef = NULL;
+        OSStatus status = AuthorizationCreate(&authRights, kAuthorizationEmptyEnvironment, flags, &authRef);
+        if (status != errAuthorizationSuccess)
+        {
+            NSLog(@"Failed to create AuthorizationRef, return code %i", status);
+        } else
+        {
+            CFErrorRef error = NULL;
+            BOOL result = SMJobRemove(kSMDomainSystemLaunchd, (__bridge CFStringRef)kHelperBundleID, authRef, YES, &error);
+            if (!result)
+            {
+                NSLog(@"SMJobBless Failed, error : %@",error);
+            } else {
+                NSLog(@"remove successfully!!");
+            }
+        }
+    }
 }
 @end
 
