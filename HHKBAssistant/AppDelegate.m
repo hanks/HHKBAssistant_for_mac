@@ -89,12 +89,17 @@
     self.kbStatus = BUILD_IN_KEYBOARD_DISABLE;
     [self setKbChangeMenuTitle:self.kbStatus];
     
-    // init usb device manager
-    usbManager = [[USBDeviceManager alloc] init];
     // get preference util
     PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
+
+    // init usb device manager
+    usbManager = [[USBDeviceManager alloc] init];
     // update delegate
     usbManager.delegate = prefUtil;
+    
+    // init preference window controller
+    // create window and init
+    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:prefUtil];
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
@@ -124,17 +129,12 @@
 }
 
 - (IBAction)openPreferencePane:(id)sender {
-    // get preference util
-    PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
-    
-    // create window and init
-    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:prefUtil];
-    
     // show window
     [prefPaneWindowController showWindow:prefPaneWindowController.myWindow];
     // set focus to new window
     NSApplication *myApp = [NSApplication sharedApplication];
     [myApp activateIgnoringOtherApps:YES];
+    NSLog(@"set focus");
     [prefPaneWindowController.myWindow orderFrontRegardless];
 }
 
