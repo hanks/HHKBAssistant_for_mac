@@ -24,7 +24,7 @@
                 <menuItem title="Disable Build-in Keyboard" id="qxb-JU-ZhS">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="changeKeyboardMode:" target="Voe-Tx-rLC" id="oAf-vm-Skc"/>
+                        <action selector="changeKeyboardMode:" target="Voe-Tx-rLC" id="5Xp-Lq-ses"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Preferences..." id="OHI-sH-3WE">

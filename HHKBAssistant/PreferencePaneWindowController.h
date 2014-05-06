@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DataSourceDelegate.h"
-
-#define XIBNAME @"prefpane"
+#import "Constants.h"
 
 @interface PreferencePaneWindowController : NSWindowController
 

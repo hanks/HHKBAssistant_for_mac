@@ -9,15 +9,7 @@
 #include <syslog.h>
 #include <xpc/xpc.h>
 #include <IOKit/kext/KextManager.h>
-
-#define ENABLE_KEYBOARD_REQUEST "enable build in keyboard"
-#define DISABLE_KEYBOARD_REQUEST "disable build in keyboard"
-
-#define REQUEST_KEY "request"
-#define RESPONSE_KEY "reply"
-
-#define BUILD_IN_KEYBOARD_KEXT_ID "com.apple.driver.AppleUSBTCKeyboard"
-#define kHelperBundleID "DisableKeyboardHelper"
+#import "../HHKBAssistant/Constants.h"
 
 static void __XPC_Peer_Event_Handler(xpc_connection_t connection, xpc_object_t event) {
     syslog(LOG_NOTICE, "Received event in helper.");
@@ -57,13 +49,18 @@ static void __XPC_Peer_Event_Handler(xpc_connection_t connection, xpc_object_t e
             xpc_connection_t remote = xpc_dictionary_get_remote_connection(event);
             xpc_object_t reply = xpc_dictionary_create_reply(event);
             
+            char msg[50] = "";
+            strcat(msg, request);
             if (ret == kOSReturnSuccess) {
-                xpc_dictionary_set_string(reply, RESPONSE_KEY, "job is done!");
+                strcat(msg, " is done!");
             } else {
-                xpc_dictionary_set_string(reply, RESPONSE_KEY, "job is error");
+                strcat(msg, " is error!");
             }
             
+            // create reply message and send back to main app
+            xpc_dictionary_set_string(reply, RESPONSE_KEY, msg);
             xpc_connection_send_message(remote, reply);
+            
             xpc_release(reply);
         }
     }

@@ -13,14 +13,14 @@
 @synthesize connection;
 @synthesize bundleID;
 
-- (void)sendRequest:(NSString *)request {
+- (void)sendRequest:(char *)request {
     // wake up connection
     xpc_connection_resume(connection);
     
     xpc_object_t message = xpc_dictionary_create(NULL, NULL, 0);
-    xpc_dictionary_set_string(message, REQUEST_KEY, [request UTF8String]);
+    xpc_dictionary_set_string(message, REQUEST_KEY, request);
     
-    NSLog(@"%@", [NSString stringWithFormat:@"Sending request: %@", request]);
+    NSLog(@"%@", [NSString stringWithFormat:@"Sending request: %s", request]);
     
     xpc_connection_send_message_with_reply(connection, message, dispatch_get_main_queue(), ^(xpc_object_t event) {
         const char* response = xpc_dictionary_get_string(event, RESPONSE_KEY);
@@ -29,7 +29,7 @@
 }
 
 - (void)initConnection {
-    connection = xpc_connection_create_mach_service([kHelperBundleID UTF8String], NULL, XPC_CONNECTION_MACH_SERVICE_PRIVILEGED);
+    connection = xpc_connection_create_mach_service(kHelperBundleID, NULL, XPC_CONNECTION_MACH_SERVICE_PRIVILEGED);
     
     if (!connection) {
         NSLog(@"%@", @"Failed to create XPC connection.");
@@ -46,12 +46,9 @@
                 
             } else if (event == XPC_ERROR_CONNECTION_INVALID) {
                 NSLog(@"%@", @"XPC connection invalid, releasing.");
-                //xpc_release(connection);
-                
             } else {
                 NSLog(@"%@", @"Unexpected XPC connection error.");
             }
-            
         } else {
             NSLog(@"%@", @"Unexpected XPC connection event.");
         }
@@ -69,9 +66,11 @@
     return xpcManager;
 }
 
-- (id)initWithBundleID:(NSString *)_bundleID {
+- (id)initWithBundleID:(char *)_bundleID {
     if (self = [super init]) {
         self.bundleID = _bundleID;
+        
+        // init connection
         [self initConnection];
     }
     return self;
