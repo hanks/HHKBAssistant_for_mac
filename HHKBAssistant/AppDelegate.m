@@ -131,11 +131,11 @@
 - (IBAction)openPreferencePane:(id)sender {
     // show window
     [prefPaneWindowController showWindow:prefPaneWindowController.myWindow];
+    
     // set focus to new window
     NSApplication *myApp = [NSApplication sharedApplication];
     [myApp activateIgnoringOtherApps:YES];
-    NSLog(@"set focus");
-    [prefPaneWindowController.myWindow orderFrontRegardless];
+    [prefPaneWindowController.myWindow makeKeyAndOrderFront:nil];
 }
 
 - (IBAction)changeKeyboardMode:(id)sender {
