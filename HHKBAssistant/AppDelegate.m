@@ -10,10 +10,6 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import "PreferenceUtil.h"
 
-#define BUILD_IN_KEYBOARD_ENABLE 1
-#define BUILD_IN_KEYBOARD_DISABLE 0
-#define kHelperBundleID @"DisableKeyboardHelper"
-
 @implementation AppDelegate
 
 @synthesize usbManager;

@@ -11,6 +11,7 @@
 		00C570091918E53900B5DD32 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 00C570081918E53900B5DD32 /* main.c */; };
 		00C5700B1918E53900B5DD32 /* DisableKeyboardHelper.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C5700A1918E53900B5DD32 /* DisableKeyboardHelper.1 */; };
 		00C570101918E5A700B5DD32 /* DisableKeyboardHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C570061918E53900B5DD32 /* DisableKeyboardHelper */; };
+		00C570151918EF6300B5DD32 /* XPCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C570141918EF6300B5DD32 /* XPCManager.m */; };
 		00EAB1D11915E1AC0028212D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB1D01915E1AC0028212D /* Cocoa.framework */; };
 		00EAB1DB1915E1AC0028212D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1D91915E1AC0028212D /* InfoPlist.strings */; };
 		00EAB1DD1915E1AC0028212D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB1DC1915E1AC0028212D /* main.m */; };
@@ -66,6 +67,8 @@
 		00C5700A1918E53900B5DD32 /* DisableKeyboardHelper.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DisableKeyboardHelper.1; sourceTree = "<group>"; };
 		00C570111918E61200B5DD32 /* DisableKeyboardHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DisableKeyboardHelper-Info.plist"; sourceTree = "<group>"; };
 		00C570121918E62700B5DD32 /* DisableKeyboardHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DisableKeyboardHelper-Launchd.plist"; sourceTree = "<group>"; };
+		00C570131918EF6300B5DD32 /* XPCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCManager.h; sourceTree = "<group>"; };
+		00C570141918EF6300B5DD32 /* XPCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCManager.m; sourceTree = "<group>"; };
 		00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHKBAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EAB1D01915E1AC0028212D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		00EAB1D31915E1AC0028212D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -194,6 +197,8 @@
 				00EAB320191776140028212D /* PreferencePaneWindowController.h */,
 				00EAB321191776140028212D /* PreferencePaneWindowController.m */,
 				003E51091917E497008961BF /* DataSourceDelegate.h */,
+				00C570131918EF6300B5DD32 /* XPCManager.h */,
+				00C570141918EF6300B5DD32 /* XPCManager.m */,
 			);
 			path = HHKBAssistant;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				00EAB3161917153E0028212D /* PreferenceUtil.m in Sources */,
 				00EAB1E41915E1AC0028212D /* AppDelegate.m in Sources */,
 				00EAB322191776140028212D /* PreferencePaneWindowController.m in Sources */,
+				00C570151918EF6300B5DD32 /* XPCManager.m in Sources */,
 				00EAB31119169EBC0028212D /* USBDeviceManager.m in Sources */,
 				00EAB1DD1915E1AC0028212D /* main.m in Sources */,
 			);
