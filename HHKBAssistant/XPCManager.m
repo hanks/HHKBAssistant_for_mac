@@ -14,21 +14,6 @@
 @synthesize bundleID;
 
 - (void)sendRequest:(char *)request {
-    // wake up connection
-    xpc_connection_resume(connection);
-    
-    xpc_object_t message = xpc_dictionary_create(NULL, NULL, 0);
-    xpc_dictionary_set_string(message, REQUEST_KEY, request);
-    
-    NSLog(@"%@", [NSString stringWithFormat:@"Sending request: %s", request]);
-    
-    xpc_connection_send_message_with_reply(connection, message, dispatch_get_main_queue(), ^(xpc_object_t event) {
-        const char* response = xpc_dictionary_get_string(event, RESPONSE_KEY);
-        NSLog(@"%@", [NSString stringWithFormat:@"Received response: %s.", response]);
-    });
-}
-
-- (void)initConnection {
     connection = xpc_connection_create_mach_service(kHelperBundleID, NULL, XPC_CONNECTION_MACH_SERVICE_PRIVILEGED);
     
     if (!connection) {
@@ -53,7 +38,19 @@
             NSLog(@"%@", @"Unexpected XPC connection event.");
         }
     });
-
+    
+    // make connection live
+    xpc_connection_resume(connection);
+    
+    xpc_object_t message = xpc_dictionary_create(NULL, NULL, 0);
+    xpc_dictionary_set_string(message, REQUEST_KEY, request);
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Sending request: %s", request]);
+    
+    xpc_connection_send_message_with_reply(connection, message, dispatch_get_main_queue(), ^(xpc_object_t event) {
+        const char* response = xpc_dictionary_get_string(event, RESPONSE_KEY);
+        NSLog(@"%@", [NSString stringWithFormat:@"Received response: %s.", response]);
+    });
 }
 
 #pragma mark Singleton Methods
@@ -69,9 +66,6 @@
 - (id)initWithBundleID:(char *)_bundleID {
     if (self = [super init]) {
         self.bundleID = _bundleID;
-        
-        // init connection
-        [self initConnection];
     }
     return self;
 }

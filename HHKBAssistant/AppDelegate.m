@@ -23,6 +23,7 @@
     [NSThread detachNewThreadSelector:@selector(setupListener) toTarget:usbManager withObject:nil];
     
     // register helper tool
+    [self removeHelper];
     [self addHelper];
 }
 
