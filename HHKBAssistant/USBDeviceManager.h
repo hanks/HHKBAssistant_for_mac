@@ -14,6 +14,7 @@
 #include <IOKit/IOCFPlugIn.h>
 #include <IOKit/usb/IOUSBLib.h>
 #include "DataSourceDelegate.h"
+#include "XPCManager.h"
 #include "Constants.h"
 
 typedef struct MyPrivateData {
@@ -33,6 +34,8 @@ typedef struct MyPrivateData {
 
 // delegate for plist data source
 @property (nonatomic, assign) id<DataSourceDelegate>  delegate;
+// xpc manager
+@property XPCManager *xpcManager;
 
 ///////////////////////////////////////////
 //// use to listen to usb device

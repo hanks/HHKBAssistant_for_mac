@@ -14,6 +14,7 @@
 @synthesize gAddedIter;
 @synthesize gRunLoop;
 @synthesize delegate;
+@synthesize xpcManager;
 
 //////////////////////////////////////////////////
 // wrapper object-c method to c callback function
@@ -45,10 +46,14 @@ static void SignalHandler(int sigraised) {
         // voice out message
         ///////////////////////////
         [self doOutMessage:privateDataRef->deviceName];
+        
+        //auto enable keyboard action when device is removed or not
+        [self autoEnOrDisableKeyboard:ENABLE_KEYBOARD_REQUEST];
 
         // Dump our private data to stderr just to see what it looks like.
-        //NSLog(@"privateDataRef->deviceName: %s", privateDataRef->deviceName);
-		//NSLog(@"privateDataRef->locationID: %u.\n\n", privateDataRef->locationID);
+        NSLog(@"device is removed");
+        NSLog(@"privateDataRef->deviceName: %s", privateDataRef->deviceName);
+		NSLog(@"privateDataRef->locationID: %u.\n\n", privateDataRef->locationID);
         
         if (privateDataRef->deviceInterface) {
             (*privateDataRef->deviceInterface)->Release(privateDataRef->deviceInterface);
@@ -99,6 +104,9 @@ static void SignalHandler(int sigraised) {
                 ///////////////////////////
                 [self doInMessage:deviceName];
                 
+                //auto disable keyboard action when device is removed or not
+                [self autoEnOrDisableKeyboard:DISABLE_KEYBOARD_REQUEST];
+                
                 // Save the device's name to our private data.
                 strcpy(privateDataRef->deviceName, deviceName);
                 
@@ -138,6 +146,11 @@ static void SignalHandler(int sigraised) {
                 
                 // save self point to privateDataRef
                 privateDataRef->usbManageRef = (__bridge void *)(self);
+                
+                // Dump our private data to stderr just to see what it looks like.
+                NSLog(@"device is plugged in");
+                NSLog(@"privateDataRef->deviceName: %s", privateDataRef->deviceName);
+                NSLog(@"privateDataRef->locationID: %u.\n\n", privateDataRef->locationID);
                 
                 // Register for an interest notification of this device being removed. Use a reference to our
                 // private data as the refCon which will be passed to the notification callback.
@@ -255,9 +268,24 @@ static void SignalHandler(int sigraised) {
     }
 }
 
+- (void) autoEnOrDisableKeyboard:(char *)request{
+    NSInteger flag = [delegate isAutoDisable];
+    if (flag == NSOnState) {
+        // only do auto action when flag is on
+        [xpcManager sendRequest:request];
+    }
+}
+
 - (void) voiceMessage:(NSString *)msg {
     NSString *command = [NSString stringWithFormat:@"say %@", msg];
     system([command UTF8String]);
+}
+
+- (id) init {
+    if (self = [super init]) {
+        xpcManager = [XPCManager getSharedInstance];
+    }
+    return self;
 }
 
 @end
