@@ -21,24 +21,24 @@
         <window title="Preference" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES"/>
-            <rect key="contentRect" x="568" y="592" width="476" height="211"/>
+            <rect key="contentRect" x="568" y="592" width="499" height="211"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="476" height="211"/>
+                <rect key="frame" x="0.0" y="0.0" width="499" height="211"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qO-An-vXz">
-                        <rect key="frame" x="18" y="175" width="440" height="18"/>
+                        <rect key="frame" x="18" y="175" width="463" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Auto disable build-in keyboard when device is plugged in and out" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oQo-GB-sna">
+                        <buttonCell key="cell" type="check" title="Auto disable/enable build-in keyboard when device is plugged in/out" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oQo-GB-sna">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZG3-hX-RBS">
-                        <rect key="frame" x="18" y="155" width="380" height="18"/>
+                        <rect key="frame" x="18" y="155" width="355" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Enable voice message when device is plugged in and out" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="64A-8g-erI">
+                        <buttonCell key="cell" type="check" title="Enable voice message when device is plugged in/out" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="64A-8g-erI">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -87,7 +87,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-g9-2YE">
-                        <rect key="frame" x="392" y="23" width="64" height="19"/>
+                        <rect key="frame" x="415" y="19" width="64" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wZo-Fo-pb6">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -98,7 +98,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WWh-DE-Tnj">
-                        <rect key="frame" x="320" y="23" width="64" height="19"/>
+                        <rect key="frame" x="343" y="19" width="64" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uUN-BN-Pxr">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -109,7 +109,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjP-Jz-3xC">
-                        <rect key="frame" x="331" y="50" width="118" height="17"/>
+                        <rect key="frame" x="354" y="46" width="118" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Powered by hanks" id="lK1-KF-uph">
                             <font key="font" metaFont="system"/>

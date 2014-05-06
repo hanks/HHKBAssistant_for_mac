@@ -36,12 +36,15 @@
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"icon_16x16" ofType:@"png"];
     NSImage *icon = [[NSImage alloc] initWithContentsOfFile:iconPath];
     [statusItem setImage:icon];
-    [statusItem setToolTip:@"USB Keyboard Helpler"];
+    [statusItem setToolTip:APP_TOOLTIP];
     [statusItem setHighlightMode:YES];
     
     // init keyboard change menu title
     self.kbStatus = BUILD_IN_KEYBOARD_DISABLE;
     [self setKbChangeMenuTitle:self.kbStatus];
+    
+    // init XPC manager, should before usb manager
+    xpcManager = [XPCManager getSharedInstance];
     
     // get preference util
     PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
@@ -54,9 +57,6 @@
     // init preference window controller
     // create window and init
     prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:prefUtil];
-    
-    // init XPC manager
-    xpcManager = [XPCManager getSharedInstance];
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {

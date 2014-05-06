@@ -9,6 +9,7 @@
 #ifndef HHKBAssistant_Constants_h
 #define HHKBAssistant_Constants_h
 
+#define APP_TOOLTIP @"HHKB Professional Helpler"
 #define BUILD_IN_KEYBOARD_ENABLE 1
 #define BUILD_IN_KEYBOARD_DISABLE 0
 #define kHelperBundleID "DisableKeyboardHelper"
