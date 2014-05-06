@@ -13,7 +13,8 @@
 #include <IOKit/IOMessage.h>
 #include <IOKit/IOCFPlugIn.h>
 #include <IOKit/usb/IOUSBLib.h>
-#import "DataSourceDelegate.h"
+#include "DataSourceDelegate.h"
+#include "Constants.h"
 
 typedef struct MyPrivateData {
     io_object_t				notification;

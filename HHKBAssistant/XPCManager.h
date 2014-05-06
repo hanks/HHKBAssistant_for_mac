@@ -7,19 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
-
-#define ENABLE_KEYBOARD_REQUEST "enable build in keyboard"
-#define DISABLE_KEYBOARD_REQUEST "disable build in keyboard"
-
-#define REQUEST_KEY "request"
-#define RESPONSE_KEY "reply"
+#import "Constants.h"
 
 @interface XPCManager : NSObject
 
 @property xpc_connection_t connection;
-@property NSString* bundleID;
+@property char* bundleID;
 
-- (void)sendRequest:(NSString *)request;
+- (void)sendRequest:(char *)request;
++ (id)getSharedInstance;
 
 @end

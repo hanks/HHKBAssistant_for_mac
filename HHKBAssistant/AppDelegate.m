@@ -15,6 +15,7 @@
 @synthesize usbManager;
 @synthesize statusMenu;
 @synthesize prefPaneWindowController;
+@synthesize xpcManager;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -52,6 +53,9 @@
     // init preference window controller
     // create window and init
     prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:prefUtil];
+    
+    // init XPC manager
+    xpcManager = [XPCManager getSharedInstance];
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
@@ -69,11 +73,11 @@
     switch (kbStatus) {
         case BUILD_IN_KEYBOARD_ENABLE:
             // enable build in keyboard
-            
+            [xpcManager sendRequest:ENABLE_KEYBOARD_REQUEST];
             break;
         case BUILD_IN_KEYBOARD_DISABLE:
             // disable build in keyboard
-            
+            [xpcManager sendRequest:DISABLE_KEYBOARD_REQUEST];
             break;
     }
     
@@ -176,7 +180,7 @@
     // copy helper execute binary file to /Library/PrivilegedHelperTools
     // copy helper launchd settings plist file to /Library/LaunchDaemons
     NSDictionary *helperInfo = (__bridge NSDictionary*)SMJobCopyDictionary(kSMDomainSystemLaunchd,
-                                                                           (__bridge CFStringRef)kHelperBundleID);
+                                                                           CFSTR(kHelperBundleID));
     if (!helperInfo)
     {
         AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
@@ -194,7 +198,7 @@
         } else
         {
             CFErrorRef error = NULL;
-            BOOL result = SMJobBless(kSMDomainSystemLaunchd, (__bridge CFStringRef)kHelperBundleID, authRef, &error);
+            BOOL result = SMJobBless(kSMDomainSystemLaunchd, CFSTR(kHelperBundleID), authRef, &error);
             if (!result)
             {
                 NSLog(@"SMJobBless Failed, error : %@",error);
@@ -209,7 +213,7 @@
 
 - (void)removeHelper {
     NSDictionary *helperInfo = (__bridge NSDictionary*)SMJobCopyDictionary(kSMDomainSystemLaunchd,
-                                                                           (__bridge CFStringRef)kHelperBundleID);
+                                                                           CFSTR(kHelperBundleID));
     if (helperInfo)
     {
         AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
@@ -227,7 +231,7 @@
         } else
         {
             CFErrorRef error = NULL;
-            BOOL result = SMJobRemove(kSMDomainSystemLaunchd, (__bridge CFStringRef)kHelperBundleID, authRef, YES, &error);
+            BOOL result = SMJobRemove(kSMDomainSystemLaunchd, CFSTR(kHelperBundleID), authRef, YES, &error);
             if (!result)
             {
                 NSLog(@"SMJobBless Failed, error : %@",error);

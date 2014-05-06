@@ -8,16 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PreferencePaneWindowController.h"
-
-#define PREFERENCE_NAME @"preferences"
-
-#define DEVICES_KEY @"target_devices"
-#define IS_VOICE_MESSAGE_ALL_KEY @"is_voice_message_all_key"
-#define IS_VOICE_MESSAGE_IN_KEY @"is_voice_message_in_key"
-#define IS_VOICE_MESSAGE_OUT_KEY @"is_voice_message_out_key"
-#define IN_MESSAGE_KEY @"in_message"
-#define OUT_MESSAGE_KEY @"out_message"
-#define IS_AUTO_DISABLE_KEY @"is_auto_disable"
+#import "Constants.h"
 
 @interface PreferenceUtil : NSObject <DataSourceDelegate>
 

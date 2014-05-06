@@ -9,10 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "USBDeviceManager.h"
 #import "PreferencePaneWindowController.h"
-
-#define BUILD_IN_KEYBOARD_ENABLE 1
-#define BUILD_IN_KEYBOARD_DISABLE 0
-#define kHelperBundleID @"DisableKeyboardHelper"
+#import "XPCManager.h"
+#import "Constants.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem * statusItem;
@@ -22,7 +20,8 @@
 @property (weak) IBOutlet NSMenuItem *kbChangeMenu;
 @property BOOL kbStatus;
 
-@property (strong) PreferencePaneWindowController *prefPaneWindowController;
+@property PreferencePaneWindowController *prefPaneWindowController;
 @property USBDeviceManager *usbManager;
+@property XPCManager *xpcManager;
 
 @end
