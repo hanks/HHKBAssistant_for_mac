@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		003E510D1918A91F008961BF /* ding.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 003E510C1918A91F008961BF /* ding.WAV */; };
+		00C570091918E53900B5DD32 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 00C570081918E53900B5DD32 /* main.c */; };
+		00C5700B1918E53900B5DD32 /* DisableKeyboardHelper.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C5700A1918E53900B5DD32 /* DisableKeyboardHelper.1 */; };
+		00C570101918E5A700B5DD32 /* DisableKeyboardHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C570061918E53900B5DD32 /* DisableKeyboardHelper */; };
 		00EAB1D11915E1AC0028212D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EAB1D01915E1AC0028212D /* Cocoa.framework */; };
 		00EAB1DB1915E1AC0028212D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00EAB1D91915E1AC0028212D /* InfoPlist.strings */; };
 		00EAB1DD1915E1AC0028212D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB1DC1915E1AC0028212D /* main.m */; };
@@ -31,10 +34,38 @@
 		00EAB322191776140028212D /* PreferencePaneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAB321191776140028212D /* PreferencePaneWindowController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		00C570041918E53900B5DD32 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				00C5700B1918E53900B5DD32 /* DisableKeyboardHelper.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		00C5700F1918E57400B5DD32 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				00C570101918E5A700B5DD32 /* DisableKeyboardHelper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		003E51091917E497008961BF /* DataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceDelegate.h; sourceTree = "<group>"; };
 		003E510A1918A7F5008961BF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		003E510C1918A91F008961BF /* ding.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.WAV; sourceTree = "<group>"; };
+		00C570061918E53900B5DD32 /* DisableKeyboardHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DisableKeyboardHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C570081918E53900B5DD32 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		00C5700A1918E53900B5DD32 /* DisableKeyboardHelper.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DisableKeyboardHelper.1; sourceTree = "<group>"; };
+		00C570111918E61200B5DD32 /* DisableKeyboardHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DisableKeyboardHelper-Info.plist"; sourceTree = "<group>"; };
+		00C570121918E62700B5DD32 /* DisableKeyboardHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DisableKeyboardHelper-Launchd.plist"; sourceTree = "<group>"; };
 		00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHKBAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EAB1D01915E1AC0028212D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		00EAB1D31915E1AC0028212D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +101,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00C570031918E53900B5DD32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00EAB1CA1915E1AC0028212D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,10 +123,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00C570071918E53900B5DD32 /* DisableKeyboardHelper */ = {
+			isa = PBXGroup;
+			children = (
+				00C570081918E53900B5DD32 /* main.c */,
+				00C5700A1918E53900B5DD32 /* DisableKeyboardHelper.1 */,
+				00C570111918E61200B5DD32 /* DisableKeyboardHelper-Info.plist */,
+				00C570121918E62700B5DD32 /* DisableKeyboardHelper-Launchd.plist */,
+			);
+			path = DisableKeyboardHelper;
+			sourceTree = "<group>";
+		};
 		00EAB1C41915E1AC0028212D = {
 			isa = PBXGroup;
 			children = (
 				00EAB1D61915E1AC0028212D /* HHKBAssistant */,
+				00C570071918E53900B5DD32 /* DisableKeyboardHelper */,
 				00EAB1CF1915E1AC0028212D /* Frameworks */,
 				00EAB1CE1915E1AC0028212D /* Products */,
 			);
@@ -98,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				00EAB1CD1915E1AC0028212D /* HHKBAssistant.app */,
+				00C570061918E53900B5DD32 /* DisableKeyboardHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,6 +228,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		00C570051918E53900B5DD32 /* DisableKeyboardHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00C5700C1918E53900B5DD32 /* Build configuration list for PBXNativeTarget "DisableKeyboardHelper" */;
+			buildPhases = (
+				00C570021918E53900B5DD32 /* Sources */,
+				00C570031918E53900B5DD32 /* Frameworks */,
+				00C570041918E53900B5DD32 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DisableKeyboardHelper;
+			productName = DisableKeyboardHelper;
+			productReference = 00C570061918E53900B5DD32 /* DisableKeyboardHelper */;
+			productType = "com.apple.product-type.tool";
+		};
 		00EAB1CC1915E1AC0028212D /* HHKBAssistant */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00EAB1FE1915E1AC0028212D /* Build configuration list for PBXNativeTarget "HHKBAssistant" */;
@@ -184,6 +252,7 @@
 				00EAB1C91915E1AC0028212D /* Sources */,
 				00EAB1CA1915E1AC0028212D /* Frameworks */,
 				00EAB1CB1915E1AC0028212D /* Resources */,
+				00C5700F1918E57400B5DD32 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -217,6 +286,7 @@
 			projectRoot = "";
 			targets = (
 				00EAB1CC1915E1AC0028212D /* HHKBAssistant */,
+				00C570051918E53900B5DD32 /* DisableKeyboardHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +314,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00C570021918E53900B5DD32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C570091918E53900B5DD32 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00EAB1C91915E1AC0028212D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +364,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		00C5700D1918E53900B5DD32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"DisableKeyboardHelper/DisableKeyboardHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"DisableKeyboardHelper/DisableKeyboardHelper-Launchd.plist",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		00C5700E1918E53900B5DD32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"DisableKeyboardHelper/DisableKeyboardHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"DisableKeyboardHelper/DisableKeyboardHelper-Launchd.plist",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		00EAB1FC1915E1AC0028212D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -302,6 +420,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = hanks;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -340,6 +459,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = hanks;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -387,6 +507,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00C5700C1918E53900B5DD32 /* Build configuration list for PBXNativeTarget "DisableKeyboardHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00C5700D1918E53900B5DD32 /* Debug */,
+				00C5700E1918E53900B5DD32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		00EAB1C81915E1AC0028212D /* Build configuration list for PBXProject "HHKBAssistant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
