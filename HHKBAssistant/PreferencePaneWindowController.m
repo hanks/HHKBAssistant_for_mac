@@ -154,8 +154,8 @@
 }
 
 - (void)playSoundEffect {
-    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"ding" ofType:@"WAV"];
-    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
+    // not to use [NSSound alloc] way will cause a memory leak
+    NSSound *sound = [NSSound soundNamed:@"ding.WAV"];
     [sound play];
 }
 
