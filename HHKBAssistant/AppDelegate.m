@@ -43,7 +43,8 @@
     [statusItem setHighlightMode:YES];
     
     // init keyboard change menu title
-    self.kbStatus = [self checkKbState];
+    //self.kbStatus = [self checkKbState];
+    self.kbStatus = BUILD_IN_KEYBOARD_DISABLE;
     [self setKbChangeMenuTitle:self.kbStatus];
     
     // init XPC manager, should before usb manager
@@ -78,21 +79,23 @@
 
 - (BOOL)checkKbState {
     // direct to detect keyboard kext is loaded or not
-    BOOL result;
     
-    CFDictionaryRef kextRef = KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: [NSString stringWithFormat:@"%s", BUILD_IN_KEYBOARD_KEXT_ID]], NULL); // NULL means copy all info about this kext
-    
-    if (kextRef) {
-        // if existed, means loaded
-        result = BUILD_IN_KEYBOARD_ENABLE;
-    } else {
-        result = BUILD_IN_KEYBOARD_DISABLE;
-    }
+
+    // does not work...
+    //BOOL result;
+//    CFDictionaryRef kextRef = KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: [NSString stringWithFormat:@"%s", BUILD_IN_KEYBOARD_KEXT_ID]], NULL); // NULL means copy all info about this kext
+//    
+//    if (kextRef) {
+//        // if existed, means loaded
+//        result = BUILD_IN_KEYBOARD_ENABLE;
+//    } else {
+//        result = BUILD_IN_KEYBOARD_DISABLE;
+//    }
     
     // release
-    CFRelease(kextRef);
+//    CFRelease(kextRef);
     
-    return result;
+    return self.kbStatus;
 }
 
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
