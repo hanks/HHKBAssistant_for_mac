@@ -42,13 +42,13 @@ static void SignalHandler(int sigraised) {
     kern_return_t	kr;
     
     if (messageType == kIOMessageServiceIsTerminated) {
+        //auto enable keyboard action when device is removed or not
+        [self autoEnOrDisableKeyboard:ENABLE_KEYBOARD_REQUEST];
+        
         ///////////////////////////
         // voice out message
         ///////////////////////////
         [self doOutMessage:privateDataRef->deviceName];
-        
-        //auto enable keyboard action when device is removed or not
-        [self autoEnOrDisableKeyboard:ENABLE_KEYBOARD_REQUEST];
 
         // Dump our private data to stderr just to see what it looks like.
         NSLog(@"device is removed");
@@ -99,13 +99,13 @@ static void SignalHandler(int sigraised) {
             if (strcmp(deviceName, [targetDeviceName UTF8String]) == 0) {
                 // if hit, do action
                 
+                //auto disable keyboard action when device is removed or not
+                [self autoEnOrDisableKeyboard:DISABLE_KEYBOARD_REQUEST];
+                
                 ///////////////////////////
                 // voice in message
                 ///////////////////////////
                 [self doInMessage:deviceName];
-                
-                //auto disable keyboard action when device is removed or not
-                [self autoEnOrDisableKeyboard:DISABLE_KEYBOARD_REQUEST];
                 
                 // Save the device's name to our private data.
                 strcpy(privateDataRef->deviceName, deviceName);
