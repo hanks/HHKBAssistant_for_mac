@@ -30,7 +30,10 @@
 - (void)awakeFromNib {
     // add status icon to system menu bar
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [statusItem setMenu:statusMenu];
+    
+    // set status item click action
+    [statusItem setAction:@selector(statusItemClicked:)];
+    [statusItem setTarget:self];
     
     // set status bar icon
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"icon_16x16" ofType:@"png"];
@@ -60,6 +63,19 @@
 }
 
 #pragma mark IBAction Method
+- (IBAction)statusItemClicked:(id)sender {
+    // if you want to set action to status item, you can not use 'statusItem.setMenu' to open menu, or else
+    // action method will be disable, you should use [statusItem popUpStatusItemMenu] to do the job in action method
+
+    // update disable menu title each time when open menu
+    // but a little not effective, need to change kbStatus in use manager when auto disable happens.
+    self.kbStatus = [self checkKbState];
+    [self setKbChangeMenuTitle:self.kbStatus];
+    
+    // popup menu
+    [statusItem popUpStatusItemMenu:statusMenu];
+}
+
 - (BOOL)checkKbState {
     // direct to detect keyboard kext is loaded or not
     BOOL result;
@@ -228,7 +244,7 @@
             }
         }
     } else {
-        NSLog(@"already registered!!");
+        NSLog(@"helper tool is already registered!!");
     }
 }
 
@@ -257,7 +273,7 @@
             {
                 NSLog(@"SMJobBless Failed, error : %@",error);
             } else {
-                NSLog(@"remove successfully!!");
+                NSLog(@"helper tool is removed successfully!!");
             }
         }
     }
