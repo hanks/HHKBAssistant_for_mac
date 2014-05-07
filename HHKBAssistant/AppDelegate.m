@@ -64,14 +64,17 @@
     // direct to detect keyboard kext is loaded or not
     BOOL result;
     
-    NSDictionary *kexts = (__bridge NSDictionary *)KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: [NSString stringWithFormat:@"%s", BUILD_IN_KEYBOARD_KEXT_ID]], NULL); // NULL means copy all info about this kext
+    CFDictionaryRef kextRef = KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)[NSArray arrayWithObject: [NSString stringWithFormat:@"%s", BUILD_IN_KEYBOARD_KEXT_ID]], NULL); // NULL means copy all info about this kext
     
-    if (kexts) {
+    if (kextRef) {
         // if existed, means loaded
         result = BUILD_IN_KEYBOARD_ENABLE;
     } else {
         result = BUILD_IN_KEYBOARD_DISABLE;
     }
+    
+    // release
+    CFRelease(kextRef);
     
     return result;
 }
