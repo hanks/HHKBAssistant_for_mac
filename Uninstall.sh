@@ -2,4 +2,4 @@
 
 sudo rm /Library/LaunchDaemons/DisableKeyboardHelper.plist
 sudo rm /Library/PrivilegedHelperTools/DisableKeyboardHelper
-sudo rm -f /Applications/HHKBAssistant.app
+sudo rm -r /Applications/HHKBAssistant.app
