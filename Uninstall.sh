@@ -1,4 +1,4 @@
-#!/usr/bin
+#!/bin/sh
 
 sudo rm /Library/LaunchDaemons/DisableKeyboardHelper.plist
 sudo rm /Library/PrivilegedHelperTools/DisableKeyboardHelper
