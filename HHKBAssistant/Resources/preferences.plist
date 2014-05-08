@@ -16,6 +16,7 @@
 	<true/>
 	<key>target_devices</key>
 	<array>
+		<string>Realforce 87</string>
 		<string>HHKB Professional</string>
 	</array>
 </dict>
