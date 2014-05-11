@@ -54,7 +54,7 @@ to disable/enable mac build-in keyboard manually. It seems to unload/load driver
 2. unload/load the driver   
 3. run sudo command  
 
-The first task, you can reference <a href='https://developer.apple.com/library/mac/samplecode/USBPrivateDataSample/Listings/USBPrivateDataSample_c.html#//apple_ref/doc/uid/DTS10000456-USBPrivateDataSample_c-DontLinkElementID_4'>USB Device Detect</a>  and use some **multi-thread** implementations.
+The first task, you can reference <a href='https://developer.apple.com/library/mac/samplecode/USBPrivateDataSample/Listings/USBPrivateDataSample_c.html#//apple_ref/doc/uid/DTS10000456-USBPrivateDataSample_c-DontLinkElementID_4'>USB Device Detect</a>, use some **multi-thread** implementations and need to **wrap obj-c code to c static function** if you want to mix c and obj-c code.  
   
 The second task is simple, just use <a href='https://developer.apple.com/library/mac/documentation/IOKit/Reference/KextManager_header_reference/Reference/reference.html'>KextManager</a> API will do me favor.
 
@@ -62,9 +62,8 @@ The third one, is a little complicated. I found Apple documents say when you wan
 1. <a href='http://launchd.info/'>launchd</a>  
 2. <a href='https://developer.apple.com/library/mac/samplecode/SMJobBless/Introduction/Intro.html'>SMJobBless</a>    
 3. <a href='http://atnan.com/blog/2012/02/29/modern-privileged-helper-tools-using-smjobbless-plus-xpc'>XPC service</a>  
-4. wrap obj-c code to c static function  
-5. codesign  
-6. etc...  
+4. codesign  
+5. etc...  
 
 to abstract the high rights task to a sub helper tool run as a launchd process, and use XPC service to communication between main application and this helper tool.  
 
