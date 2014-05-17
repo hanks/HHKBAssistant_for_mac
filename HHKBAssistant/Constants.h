@@ -9,6 +9,8 @@
 #ifndef HHKBAssistant_Constants_h
 #define HHKBAssistant_Constants_h
 
+#define NOTIFICATION_TITLE @"HHKB Assistant"
+
 #define ENABLE_AUTO_MENU_TITLE @"Enable Build-in Keyboard"
 #define DISABLE_AUTO_MENU_TITLE @"Disable Build-in Keyboard"
 
