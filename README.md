@@ -82,6 +82,17 @@ https://raw.githubusercontent.com/hanks/HHKBAssistant_for_mac/master/Demo/instal
 ## Uninstall
 I also create a simple <a href='https://raw.githubusercontent.com/hanks/HHKBAssistant_for_mac/master/Installer/Uninstall.sh'>uninstall script here</a>, just contains three lines of sudo rm commands, you can check it and use it to remove all the related files.
 
+## HHKB Assistant Version History
+
+###_VERSION_ 1.1 - 2014/05/17
++**Feature**: Use notification center to alert message  
+![alt text][notification] 
+[notification]: 
+https://raw.githubusercontent.com/hanks/HHKBAssistant_for_mac/master/Demo/notification.jpg "notification"
+
+###_VERSION_ 1.0 - 2014/05/08
++First release upon the world  
+
 ## Bugs
 1. Now I **can not** find a correct way to detect build-in keyboard is disabled or not, because I want to use detect keyboard driver is loaded or not, but the driver is always loaded whether keyboard is disabled or not..., **the first menu item will not be displayed correctly.**
 
