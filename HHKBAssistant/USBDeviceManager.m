@@ -231,6 +231,14 @@ static void SignalHandler(int sigraised) {
 - (void) doInMessage:(char *)deviceName {
     // check Enable voice flag
     NSInteger flag = [delegate isEnableVoice];
+    
+    // get in text input
+    NSString *textInput = [delegate getInMsg];
+    NSString *msg = [NSString stringWithFormat:@"%s %@", deviceName, textInput];
+    
+    // notification center message is default
+    [self sendMsgToNotificationCenter:msg];
+    
     if (flag == NSOffState) {
         // do nothing
     } else {
@@ -240,9 +248,6 @@ static void SignalHandler(int sigraised) {
             // do nothing
         } else {
             // do voice message action
-            // get in text input
-            NSString *textInput = [delegate getInMsg];
-            NSString *msg = [NSString stringWithFormat:@"%s %@", deviceName, textInput];
             [self voiceMessage:msg];
         }
     }
@@ -251,6 +256,14 @@ static void SignalHandler(int sigraised) {
 - (void) doOutMessage:(char *)deviceName {
     // check Enable voice flag
     NSInteger flag = [delegate isEnableVoice];
+    
+    // get out text input
+    NSString *textInput = [delegate getOutMsg];
+    NSString *msg = [NSString stringWithFormat:@"%s %@", deviceName, textInput];
+    
+    // notification center message is default
+    [self sendMsgToNotificationCenter:msg];
+    
     if (flag == NSOffState) {
         // do nothing
     } else {
@@ -260,12 +273,18 @@ static void SignalHandler(int sigraised) {
             // do nothing
         } else {
             // do voice message action
-            // get out text input
-            NSString *textInput = [delegate getOutMsg];
-            NSString *msg = [NSString stringWithFormat:@"%s %@", deviceName, textInput];
             [self voiceMessage:msg];
         }
     }
+}
+
+- (void)sendMsgToNotificationCenter:(NSString *)msg {
+    // send message to notification center
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = NOTIFICATION_TITLE;
+    notification.informativeText = msg;
+    notification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 - (void) autoEnOrDisableKeyboard:(char *)request{

@@ -12,7 +12,7 @@
 #import "XPCManager.h"
 #import "Constants.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
     NSStatusItem * statusItem;
 }
 

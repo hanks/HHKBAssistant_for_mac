@@ -18,8 +18,10 @@
 @synthesize prefPaneWindowController;
 @synthesize xpcManager;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // use self as a notification center delegate
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+
     // set up listener in background the thread
     [NSThread detachNewThreadSelector:@selector(setupListener) toTarget:usbManager withObject:nil];
     
@@ -280,6 +282,12 @@
             }
         }
     }
+}
+
+#pragma mark notification
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification {
+    // open notification center feature
+    return YES;
 }
 @end
 
