@@ -16,6 +16,7 @@
 #include "DataSourceDelegate.h"
 #include "XPCManager.h"
 #include "Constants.h"
+#include "PreferenceUtil.h"
 
 typedef struct MyPrivateData {
     io_object_t				notification;
@@ -36,6 +37,7 @@ typedef struct MyPrivateData {
 @property (nonatomic, assign) id<DataSourceDelegate>  delegate;
 // xpc manager
 @property XPCManager *xpcManager;
+@property PreferenceUtil *prefUtil;
 
 ///////////////////////////////////////////
 //// use to listen to usb device

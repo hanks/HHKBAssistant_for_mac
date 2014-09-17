@@ -12,6 +12,8 @@
 
 @synthesize plistDic;
 @synthesize plistPath;
+@synthesize kbStatus;
+@synthesize hasExternalKB;
 
 #pragma mark basic function Methods
 - (NSMutableDictionary *)load {
@@ -128,6 +130,8 @@
     if (self = [super init]) {
         // init path
         plistPath = [[NSBundle mainBundle] pathForResource:PREFERENCE_NAME ofType:@"plist"];
+        kbStatus = BUILD_IN_KEYBOARD_ENABLE;
+        hasExternalKB = false;
         
         // init
         [self update];
