@@ -11,6 +11,7 @@
 #import "PreferencePaneWindowController.h"
 #import "XPCManager.h"
 #import "Constants.h"
+#import "PreferenceUtil.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
     NSStatusItem * statusItem;
@@ -23,5 +24,6 @@
 @property PreferencePaneWindowController *prefPaneWindowController;
 @property USBDeviceManager *usbManager;
 @property XPCManager *xpcManager;
+@property PreferenceUtil *prefUtil;
 
 @end

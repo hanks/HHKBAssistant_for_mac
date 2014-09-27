@@ -15,6 +15,7 @@
 @synthesize gRunLoop;
 @synthesize delegate;
 @synthesize xpcManager;
+@synthesize prefUtil;
 
 //////////////////////////////////////////////////
 // wrapper object-c method to c callback function
@@ -43,7 +44,8 @@ static void SignalHandler(int sigraised) {
     
     if (messageType == kIOMessageServiceIsTerminated) {
         //auto enable keyboard action when device is removed or not
-        [self autoEnOrDisableKeyboard:ENABLE_KEYBOARD_REQUEST];
+        [self autoEnOrDisableKeyboard:ENABLE_KEYBOARD_REQUEST kbSatus:BUILD_IN_KEYBOARD_ENABLE];
+        prefUtil.hasExternalKB = false;
         
         ///////////////////////////
         // voice out message
@@ -100,7 +102,8 @@ static void SignalHandler(int sigraised) {
                 // if hit, do action
                 
                 //auto disable keyboard action when device is removed or not
-                [self autoEnOrDisableKeyboard:DISABLE_KEYBOARD_REQUEST];
+                [self autoEnOrDisableKeyboard:DISABLE_KEYBOARD_REQUEST kbSatus:BUILD_IN_KEYBOARD_DISABLE];
+                prefUtil.hasExternalKB = true;
                 
                 ///////////////////////////
                 // voice in message
@@ -287,11 +290,12 @@ static void SignalHandler(int sigraised) {
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
-- (void) autoEnOrDisableKeyboard:(char *)request{
+- (void) autoEnOrDisableKeyboard:(char *)request kbSatus:(BOOL)kbStatus{
     NSInteger flag = [delegate isAutoDisable];
     if (flag == NSOnState) {
         // only do auto action when flag is on
         [xpcManager sendRequest:request];
+        prefUtil.kbStatus = kbStatus;
     }
 }
 
@@ -303,6 +307,7 @@ static void SignalHandler(int sigraised) {
 - (id) init {
     if (self = [super init]) {
         xpcManager = [XPCManager getSharedInstance];
+        prefUtil = [PreferenceUtil getSharedInstance];
     }
     return self;
 }

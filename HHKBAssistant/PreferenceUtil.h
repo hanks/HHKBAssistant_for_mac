@@ -14,6 +14,8 @@
 
 @property NSMutableDictionary* plistDic;
 @property NSString *plistPath;
+@property BOOL kbStatus;
+@property BOOL hasExternalKB;
 
 - (id)read:(NSString *)key;
 - (void)write;

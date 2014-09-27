@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import <ServiceManagement/ServiceManagement.h>
-#import "PreferenceUtil.h"
 #import <IOKit/kext/KextManager.h>
 
 @implementation AppDelegate
@@ -17,6 +16,8 @@
 @synthesize statusMenu;
 @synthesize prefPaneWindowController;
 @synthesize xpcManager;
+@synthesize kbStatus = _kbStatus;
+@synthesize prefUtil;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // use self as a notification center delegate
@@ -44,25 +45,28 @@
     [statusItem setToolTip:APP_TOOLTIP];
     [statusItem setHighlightMode:YES];
     
+    // get preference util, set property.
+    self.prefUtil = [PreferenceUtil getSharedInstance];
+    
     // init keyboard change menu title
-    //self.kbStatus = [self checkKbState];
-    self.kbStatus = BUILD_IN_KEYBOARD_DISABLE;
+    
+    // we assum the build in keyboard is enabled by default
+    // when this app runs with auto_disable enabled and a hhkb plugged in, we then reset kbStatus.
+    self.kbStatus = BUILD_IN_KEYBOARD_ENABLE;
     [self setKbChangeMenuTitle:self.kbStatus];
     
     // init XPC manager, should before usb manager
     xpcManager = [XPCManager getSharedInstance];
     
-    // get preference util
-    PreferenceUtil *prefUtil = [PreferenceUtil getSharedInstance];
 
     // init usb device manager
     usbManager = [[USBDeviceManager alloc] init];
     // update delegate
-    usbManager.delegate = prefUtil;
+    usbManager.delegate = self.prefUtil;
     
     // init preference window controller
     // create window and init
-    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:prefUtil];
+    prefPaneWindowController = [[PreferencePaneWindowController alloc] initWithXibAndDelegate:XIBNAME delegate:self.prefUtil];
 }
 
 #pragma mark IBAction Method
@@ -100,6 +104,16 @@
     return self.kbStatus;
 }
 
+- (BOOL)kbStatus {
+    // this is the custom getter for kbStatus, prefUtil.kbStatus can be updated by USBDeviceManager
+    return prefUtil.kbStatus;
+}
+
+- (void)setKbStatus:(BOOL)kbStatus {
+    // custom setter for kbStatus
+    prefUtil.kbStatus = kbStatus;
+}
+
 - (void)setKbChangeMenuTitle:(BOOL)kbStatus {
     switch (kbStatus) {
         case BUILD_IN_KEYBOARD_DISABLE:
@@ -108,6 +122,12 @@
         case BUILD_IN_KEYBOARD_ENABLE:
             [self.kbChangeMenu setTitle:DISABLE_AUTO_MENU_TITLE];
             break;
+    }
+    if (prefUtil.hasExternalKB) {
+        [self.kbChangeMenu setHidden:false];
+    }
+    else {
+        [self.kbChangeMenu setHidden:true];
     }
 }
 
