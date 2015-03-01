@@ -10,31 +10,31 @@
 	<string>HHKBAssistant</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>46CDBA3F-D157-4108-8CE5-032BE08C3A0D</key>
-		<string>ssh://github.com/hanks/HHKBAssistant_for_mac.git</string>
+		<key>D8153596C7A0F6F099540FBD3E7FAAB80E508E4A</key>
+		<string>github.com:hanks/HHKBAssistant_for_mac.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HHKBAssistant.xcodeproj/project.xcworkspace</string>
+	<string>HHKBAssistant.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>46CDBA3F-D157-4108-8CE5-032BE08C3A0D</key>
+		<key>D8153596C7A0F6F099540FBD3E7FAAB80E508E4A</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/hanks/HHKBAssistant_for_mac.git</string>
+	<string>github.com:hanks/HHKBAssistant_for_mac.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>46CDBA3F-D157-4108-8CE5-032BE08C3A0D</string>
+	<string>D8153596C7A0F6F099540FBD3E7FAAB80E508E4A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>46CDBA3F-D157-4108-8CE5-032BE08C3A0D</string>
+			<string>D8153596C7A0F6F099540FBD3E7FAAB80E508E4A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>HHKBAssistant</string>
+			<string>HHKBAssistant_for_mac</string>
 		</dict>
 	</array>
 </dict>

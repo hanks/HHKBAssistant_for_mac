@@ -447,7 +447,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.10;
 			};
 			name = Debug;
 		};
@@ -480,7 +480,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.10;
 			};
 			name = Release;
 		};
@@ -522,6 +522,7 @@
 				00C5700E1918E53900B5DD32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00EAB1C81915E1AC0028212D /* Build configuration list for PBXProject "HHKBAssistant" */ = {
 			isa = XCConfigurationList;

@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SMPrivilegedExecutables</key>
-	<dict>
-		<key>DisableKeyboardHelper</key>
-		<string>identifier com.hanks.DisableKeyboardHelper</string>
-	</dict>
-	<key>LSUIElement</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -31,11 +24,18 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2014年 hanks. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>DisableKeyboardHelper</key>
+		<string>identifier DisableKeyboardHelper and certificate root = H"545f3a6c1121b5bc906946ab6ba5d431185240d5"</string>
+	</dict>
 </dict>
 </plist>

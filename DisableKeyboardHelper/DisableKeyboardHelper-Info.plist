@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>CFBundleIdentifier</key>
-        <string>com.hanks.DisableKeyboardHelper</string>
-        <key>CFBundleInfoDictionaryVersion</key>
-        <string>6.0</string>
-        <key>CFBundleName</key>
-        <string>DisableKeyboardHelper</string>
-        <key>CFBundleVersion</key>
-        <string>3</string>
-        <key>SMAuthorizedClients</key>
-        <array>
-            <string>identifier com.hanks.HHKBAssistant</string>
-        </array>
-    </dict>
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>DisableKeyboardHelper</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>DisableKeyboardHelper</string>
+	<key>CFBundleVersion</key>
+	<string>3</string>
+	<key>SMAuthorizedClients</key>
+	<array>
+		<string>identifier "com.hanks.HHKBAssistant" and certificate root = H"545f3a6c1121b5bc906946ab6ba5d431185240d5"</string>
+	</array>
+</dict>
 </plist>
