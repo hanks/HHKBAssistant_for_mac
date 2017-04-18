@@ -5,13 +5,13 @@ A funny helper tool for HHKB professional keyboard on mac. Its main job is that 
 
 ## HHKB Assistant Version History
 
-###_VERSION_ 1.1 - 2014/05/17
+### _VERSION_ 1.1 - 2014/05/17
 + **Feature**: Use notification center to alert message  
 ![alt text][notification] 
 [notification]: 
 https://raw.githubusercontent.com/hanks/HHKBAssistant_for_mac/master/Demo/notification.jpg "notification"
 
-###_VERSION_ 1.0 - 2014/05/08
+### _VERSION_ 1.0 - 2014/05/08
 + First release upon the world  
 
 ## Why
@@ -36,7 +36,7 @@ You maybe notice message [**disable build-in keyboard is error**], because I use
 [demo]: 
 https://raw.githubusercontent.com/hanks/HHKBAssistant_for_mac/master/Demo/demo.gif "demo"
 
-##Usage
+## Usage
 [menu]: 
 https://raw.githubusercontent.com/hanks/HHKBAssistant_for_mac/master/Demo/menu.jpg "menu"
 [preference]: 
@@ -52,7 +52,7 @@ I also provide a **Preference** window to create your personal settings.
 
 You can input your favorite messages into text fields to speak when HHKB is in and out. **The device name will be always spoken, when your check this voice message feature on.**
 
-##Implementation  
+## Implementation  
 I use command:  
 >sudo kextunload                                                                                               /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext  
 
